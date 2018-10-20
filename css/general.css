@@ -1,0 +1,23 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu {
+background-color: grey;
+width: 100vw;
+height: 10vh;
+}
+
+.content {
+    width: 100vw;
+    min-height: 90vh;
+	background-color: purple;
+}
+
+.content-child {
+    width: 80vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 10vh;
+}
