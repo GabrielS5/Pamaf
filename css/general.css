@@ -3,16 +3,46 @@
     padding: 0px;
 }
 
+.top-image {
+	width: 100vw;
+	height: 12vh;
+	overflow: hidden;
+	background-color: thistle;
+}
+
+.image{
+	 float: left;
+     padding: 15px 20px 20px 10px;
+}
+
 .menu {
-background-color: grey;
-width: 100vw;
-height: 10vh;
+   	background-color: thistle;
+   	width: 100vw;
+	height: 10vh;    
+	list-style-type: none;
+    overflow: hidden;
+}
+
+.menu-item {
+    float: left;
+}
+
+.menu-item a {
+    display: block;
+    color: rgb(29,7,54);
+    text-align: center;
+    padding: 40px 30px;   
+    margin-left: 300px;
+}
+
+.menu-item a:hover {
+    background-color: rgb(151,138,166);
 }
 
 .content {
     width: 100vw;
     min-height: 90vh;
-	background-color: purple;
+	   background-color: rgb(29,7,54);
 }
 
 .content-child {
