@@ -24,15 +24,17 @@
 }
 
 .menu-item {
-    float: left;
+    float: left;    
+    padding-top: 25px;
 }
 
 .menu-item a {
-    display: block;
     color: rgb(29,7,54);
     text-align: center;
     padding: 40px 30px;   
     margin-left: 300px;
+    font-size: 25px;
+    text-decoration: none;
 }
 
 .menu-item a:hover {
@@ -42,7 +44,7 @@
 .content {
     width: 100vw;
     min-height: 90vh;
-	   background-color: rgb(29,7,54);
+	background-color: rgb(29,7,54);
 }
 
 .content-child {
