@@ -15,31 +15,6 @@
      padding: 15px 20px 20px 10px;
 }
 
-.menu {
-   	background-color: thistle;
-   	width: 100vw;
-	height: 10vh;    
-	list-style-type: none;
-    overflow: hidden;
-}
-
-.menu-item {
-    float: left;    
-    padding-top: 25px;
-}
-
-.menu-item a {
-    color: rgb(29,7,54);
-    text-align: center;
-    padding: 40px 30px;   
-    margin-left: 300px;
-    font-size: 25px;
-    text-decoration: none;
-}
-
-.menu-item a:hover {
-    background-color: rgb(151,138,166);
-
 .content {
     width: 100vw;
     min-height: 90vh;
