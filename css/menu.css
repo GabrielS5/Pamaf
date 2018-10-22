@@ -14,13 +14,18 @@
 
 .menu-item a {
     display: block;
-    color: rgb(29,7,54)
+    color: rgb(29,7,54);
     text-align: center;
     font-size: 15px;
     height: 100%;
     padding: 3vh 4vw;
-    margin-left: 200px;
     text-decoration: none;
+}
+
+.logo{
+    padding: 1vh 1vw;
+    height: 7vh;
+    width: 22vh;
 }
 
 .menu-item a:hover {
@@ -28,7 +33,7 @@
 }
 
 @media only screen and (min-width: 600px), (min-height:400) {
-    .menu-item a{
+    .menu-item a {
     font-size: 15px;
     }
 }
