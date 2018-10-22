@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: thistle;
     height: 100%;
 }
 
@@ -14,7 +14,7 @@
 
 .menu-item a {
     display: block;
-    color: white;
+    color: rgb(29,7,54);
     text-align: center;
     font-size: 15px;
     height: 100%;
@@ -22,12 +22,18 @@
     text-decoration: none;
 }
 
+.logo{
+    padding: 1vh 1vw;
+    height: 7vh;
+    width: 22vh;
+}
+
 .menu-item a:hover {
-    background-color: #111;
+    background-color: rgb(151,138,166);
 }
 
 @media only screen and (min-width: 600px), (min-height:400) {
-    .menu-item a{
+    .menu-item a {
     font-size: 15px;
     }
 }
