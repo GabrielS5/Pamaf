@@ -1,0 +1,13 @@
+.leaderboard {
+    background-color: red;
+    width: 20%;
+    height: 50vh;
+    display: inline-block;
+}
+
+.game {
+    background-color: white;
+    width: 70%;
+    height: 50vh;
+    display: inline-block;
+}
