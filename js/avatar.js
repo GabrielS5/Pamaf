@@ -12,6 +12,9 @@ window.onload = function() {
     });
 
     document.getElementById('logout').addEventListener('click', function (e) {
-        console.log("User logged out");
+        window.location.replace("../html/login.html");
+    });
+    document.getElementById('stats').addEventListener('click', function (e) {
+        window.location.replace("../html/stats.html");
     });
   };
