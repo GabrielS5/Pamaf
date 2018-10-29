@@ -104,3 +104,7 @@ p.issue {
         margin: 0 2em;
     }
 }
+
+figcaption {
+    text-align: center;
+}

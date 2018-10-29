@@ -124,7 +124,7 @@
 	}
 }
 
-@media only screen and (min-width: 600px), (min-height: 400) {
+@media only screen and (min-width: 600px) {
 	.title p {
 		font-size: 80px;
 	}
@@ -133,7 +133,7 @@
 	}
 }
 
-@media only screen and (min-width: 800px), (min-height: 600) {
+@media only screen and (min-width: 800px) {
 	.title p {
 		font-size: 80px;
 	}
@@ -142,7 +142,7 @@
 	}
 }
 
-@media only screen and (min-width: 1000px), (min-height: 700) {
+@media only screen and (min-width: 1000px) {
 	.title p {
 		font-size: 100px;
 	}
@@ -151,7 +151,7 @@
 	}
 }
 
-@media only screen and (min-width: 1200px), (min-height: 800) {
+@media only screen and (min-width: 1200px) {
 	.title p {
 		font-size: 120px;
 	}

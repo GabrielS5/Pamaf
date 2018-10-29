@@ -64,28 +64,28 @@
 }
 
 .content {
-    height: auto;
-    min-height: 90vh;
+	height: auto;
+	min-height: 90vh;
 }
-@media only screen and (min-width: 600px), (min-height: 400) {
+@media only screen and (min-width: 600px) {
 	.help-item {
 		font-size: 13px;
 	}
 }
 
-@media only screen and (min-width: 800px), (min-height: 600) {
+@media only screen and (min-width: 800px) {
 	.help-item {
 		font-size: 15px;
 	}
 }
 
-@media only screen and (min-width: 1000px), (min-height: 700) {
+@media only screen and (min-width: 1000px) {
 	.help-item {
 		font-size: 15px;
 	}
 }
 
-@media only screen and (min-width: 1200px), (min-height: 800) {
+@media only screen and (min-width: 1200px) {
 	.help-item {
 		font-size: 17px;
 	}
