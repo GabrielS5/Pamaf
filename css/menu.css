@@ -1,57 +1,70 @@
 .menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: thistle;
-    height: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: thistle;
+	height: 100%;
 }
 
 .menu-item {
-    float: left;
-    height: 100%;
+	float: left;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .menu-item a {
-    display: block;
-    color: rgb(29,7,54);
-    text-align: center;
-    font-size: 15px;
-    height: 100%;
-    padding: 3vh 4vw;
-    text-decoration: none;
+	display: block;
+	color: rgb(29, 7, 54);
+	text-align: center;
+	font-size: 15px;
+    padding-right: 3vw;
+    padding-left: 3vw;
+	text-decoration: none;
 }
 
-.logo{
-    padding: 1vh 1vw;
-    height: 7vh;
-    width: 22vh;
+.logo-item {
+	float: left;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
-.menu-item a:hover {
-    background-color: rgb(151,138,166);
+.logo {
+	padding: 1vh 1vw;
+	width: 15vw;
+	object-fit: contain;
+    max-height: 9vh;
+    min-height: 30px;
 }
 
-@media only screen and (min-width: 600px), (min-height:400) {
-    .menu-item a {
-    font-size: 15px;
-    }
+.menu-item:hover {
+	background-color: rgb(151, 138, 166);
 }
 
-@media only screen and (min-width: 800px), (min-height:600) {
-    .menu-item a{
-    font-size: 18px;
-    }
+@media only screen and (min-width: 600px), (min-height: 400) {
+	.menu-item a {
+		font-size: 15px;
+	}
 }
 
-@media only screen and (min-width: 1000px), (min-height:700) {
-    .menu-item a{
-    font-size: 24px;
-    }
+@media only screen and (min-width: 800px), (min-height: 600) {
+	.menu-item a {
+		font-size: 18px;
+	}
 }
 
-@media only screen and (min-width: 1200px), (min-height:800) {
-    .menu-item a{
-    font-size: 30px;
-    }
+@media only screen and (min-width: 1000px), (min-height: 700) {
+	.menu-item a {
+		font-size: 24px;
+	}
+}
+
+@media only screen and (min-width: 1200px), (min-height: 800) {
+	.menu-item a {
+		font-size: 30px;
+	}
 }

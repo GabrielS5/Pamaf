@@ -17,4 +17,7 @@ window.onload = function() {
     document.getElementById('stats').addEventListener('click', function (e) {
         window.location.replace("../html/stats.html");
     });
+    document.getElementById('profile').addEventListener('click', function (e) {
+        window.location.replace("../html/profile.html");
+    });
   };
