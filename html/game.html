@@ -1,4 +1,5 @@
 <!doctype html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -30,7 +31,7 @@
         <div class="menu-container">
             <ul class="menu">
                 <li class="logo-item">
-                    <img class="logo" src="../img/logo.bmp">
+                    <img class="logo" src="../img/logo.bmp" alt="pamaf-logo">
                 </li>
                 <li class="menu-item">
                     <a href="../html/home.html">Home</a>
@@ -46,14 +47,14 @@
     </nav>
     <div class="content">
         <div class="leaderboard-area">
-            <span class="leaderboard">
+            <div class="leaderboard">
                 <div class="year-selection">
-                    <input type="submit" id="save-button" value="Year 1">
-                    <input type="submit" id="save-button" value="Year 2">
-                    <input type="submit" id="save-button" value="Year 3">
+                    <input type="submit" id="year1" value="Year 1">
+                    <input type="submit" id="year2" value="Year 2">
+                    <input type="submit" id="year3" value="Year 3">
                 </div>
                 <div class="announcer">
-                    <center>Leaderboard</center>
+                    Leaderboard
                 </div>
                 <div class="leaderboard-item">
                     <span class="leaderboard-item-name">1. Adriana</span>
@@ -95,7 +96,7 @@
                     <span class="leaderboard-item-name">10. Messi</span>
                     <span class="leaderboard-item-value">800</span>
                 </div>
-            </span>
+            </div>
         </div>
         <div class="game-area">
             <div class="game">
@@ -103,7 +104,6 @@
             </div>
         </div>
     </div>
-
     <script src="../js/game.js"></script>
 </body>
 

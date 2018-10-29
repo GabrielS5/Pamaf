@@ -33,6 +33,7 @@
 	font-weight: bold;
 	font-family: 'Raleway', sans-serif;
 	padding-bottom: 4%;
+	text-align: center;
 }
 
 .friend-name {
@@ -94,7 +95,7 @@
 	}
 }
 
-@media only screen and (min-width: 600px), (min-height: 400) {
+@media only screen and (min-width: 600px) {
 	.item {
 		font-size: 10px;
 	}
@@ -103,7 +104,7 @@
 	}
 }
 
-@media only screen and (min-width: 800px), (min-height: 600) {
+@media only screen and (min-width: 800px) {
 	.item {
 		font-size: 12px;
 	}
@@ -112,7 +113,7 @@
 	}
 }
 
-@media only screen and (min-width: 1000px), (min-height: 700) {
+@media only screen and (min-width: 1000px) {
 	.item {
 		font-size: 15px;
 	}
@@ -121,7 +122,7 @@
 	}
 }
 
-@media only screen and (min-width: 1200px), (min-height: 800) {
+@media only screen and (min-width: 1200px) {
 	.item {
 		font-size: 20px;
 	}

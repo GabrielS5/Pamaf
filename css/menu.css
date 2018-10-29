@@ -10,9 +10,6 @@
 .menu-item {
 	float: left;
 	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 }
 
 .menu-item a {
@@ -21,7 +18,11 @@
 	text-align: center;
 	font-size: 15px;
     padding-right: 3vw;
-    padding-left: 3vw;
+	padding-left: 3vw;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	text-decoration: none;
 }
 
@@ -45,25 +46,25 @@
 	background-color: rgb(151, 138, 166);
 }
 
-@media only screen and (min-width: 600px), (min-height: 400) {
+@media only screen and (min-width: 600px) {
 	.menu-item a {
 		font-size: 15px;
 	}
 }
 
-@media only screen and (min-width: 800px), (min-height: 600) {
+@media only screen and (min-width: 800px) {
 	.menu-item a {
 		font-size: 18px;
 	}
 }
 
-@media only screen and (min-width: 1000px), (min-height: 700) {
+@media only screen and (min-width: 1000px) {
 	.menu-item a {
 		font-size: 24px;
 	}
 }
 
-@media only screen and (min-width: 1200px), (min-height: 800) {
+@media only screen and (min-width: 1200px) {
 	.menu-item a {
 		font-size: 30px;
 	}
