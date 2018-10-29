@@ -13,70 +13,98 @@
     <div>
         <img id="avatar" class="avatar" src="../img/boy.bmp" alt="Avatar">
         <div id="avatar-menu" class="avatar-menu hidden">
-            <div id="stats" class="avatar-menu-child">
-                Stats
-            </div>
-            <div id="logout" class="avatar-menu-child last">
-                Log Out
-            </div>
+            <nav>
+                <div id="profile" class="avatar-menu-child">
+                    Profile
+                </div>
+                <div id="stats" class="avatar-menu-child">
+                    Stats
+                </div>
+                <div id="logout" class="avatar-menu-child last">
+                    Log Out
+                </div>
+            </nav>
         </div>
     </div>
-    <div class="menu-container">
-        <ul class="menu">
-            <li class="menu-item">
-                <img class="logo" src="../img/logo.bmp">
-            </li>
-            <li class="menu-item">
-                <a href="../html/home.html">Home</a>
-            </li>
-            <li class="menu-item">
-                <a href="../html/game.html">Play</a>
-            </li>
-            <li class="menu-item">
-                <a href="../html/howto.html">How to play</a>
-            </li>
-        </ul>
-    </div>
+    <nav>
+        <div class="menu-container">
+            <ul class="menu">
+                <li class="logo-item">
+                    <img class="logo" src="../img/logo.bmp">
+                </li>
+                <li class="menu-item">
+                    <a href="../html/home.html">Home</a>
+                </li>
+                <li class="menu-item">
+                    <a href="../html/game.html">Play</a>
+                </li>
+                <li class="menu-item">
+                    <a href="../html/howto.html">How to play</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="content">
         <div class="leaderboard-area">
             <span class="leaderboard">
+                <div class="year-selection">
+                    <input type="submit" id="save-button" value="Year 1">
+                    <input type="submit" id="save-button" value="Year 2">
+                    <input type="submit" id="save-button" value="Year 3">
+                </div>
                 <div class="announcer">
                     <center>Leaderboard</center>
                 </div>
                 <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">1. bla</span>
-                    <span class="leaderboard-item-value">3000</span>
+                    <span class="leaderboard-item-name">1. Adriana</span>
+                    <span class="leaderboard-item-value">2600</span>
                 </div>
                 <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">2. bla</span>
-                    <span class="leaderboard-item-value">3000</span>
+                    <span class="leaderboard-item-name">2. Gabi</span>
+                    <span class="leaderboard-item-value">2600</span>
                 </div>
                 <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">3. bla</span>
-                    <span class="leaderboard-item-value">3000</span>
+                    <span class="leaderboard-item-name">3. Cineva</span>
+                    <span class="leaderboard-item-value">2000</span>
                 </div>
                 <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">4. bla</span>
-                    <span class="leaderboard-item-value">3000</span>
+                    <span class="leaderboard-item-name">4. Altcineva</span>
+                    <span class="leaderboard-item-value">1800</span>
                 </div>
                 <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">5. bla</span>
-                    <span class="leaderboard-item-value">3000</span>
+                    <span class="leaderboard-item-name">5. Ioana</span>
+                    <span class="leaderboard-item-value">1600</span>
                 </div>
                 <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">6. bla</span>
-                    <span class="leaderboard-item-value">3000</span>
+                    <span class="leaderboard-item-name">6. Adi</span>
+                    <span class="leaderboard-item-value">1200</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="leaderboard-item-name">7. Larisa</span>
+                    <span class="leaderboard-item-value">1100</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="leaderboard-item-name">8. Denisa</span>
+                    <span class="leaderboard-item-value">1030</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="leaderboard-item-name">9. Galan</span>
+                    <span class="leaderboard-item-value">900</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="leaderboard-item-name">10. Messi</span>
+                    <span class="leaderboard-item-value">800</span>
                 </div>
             </span>
         </div>
-        
         <div class="game-area">
             <div class="game">
-                <img src="../img/game.png" class="game-image">
+                <canvas class="game-canvas" id="game" width="1000" height="700"></canvas>
             </div>
         </div>
     </div>
 
+    <script src="../js/game.js"></script>
 </body>
 
 </html>
