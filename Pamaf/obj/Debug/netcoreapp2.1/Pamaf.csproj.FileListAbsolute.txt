@@ -1,0 +1,42 @@
+C:\Users\gabri\source\repos\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.deps.json
+C:\Users\gabri\source\repos\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.runtimeconfig.json
+C:\Users\gabri\source\repos\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.runtimeconfig.dev.json
+C:\Users\gabri\source\repos\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.dll
+C:\Users\gabri\source\repos\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.pdb
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.csprojAssemblyReference.cache
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.csproj.CoreCompileInputs.cache
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorAssemblyInfo.cache
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorAssemblyInfo.cs
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInfoInputs.cache
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInfo.cs
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorTargetAssemblyInfo.cache
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.dll
+C:\Users\gabri\source\repos\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.pdb
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.deps.json
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.runtimeconfig.json
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.runtimeconfig.dev.json
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.dll
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.pdb
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.csprojAssemblyReference.cache
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorAssemblyInfo.cache
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorAssemblyInfo.cs
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInfoInputs.cache
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInfo.cs
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorTargetAssemblyInfo.cache
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.dll
+C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.pdb
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.deps.json
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.runtimeconfig.json
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.runtimeconfig.dev.json
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.dll
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.pdb
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.csprojAssemblyReference.cache
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorAssemblyInfo.cache
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorAssemblyInfo.cs
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInfoInputs.cache
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInfo.cs
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorTargetAssemblyInfo.cache
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.dll
+C:\Users\gabri\Desktop\Git 2\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.pdb
