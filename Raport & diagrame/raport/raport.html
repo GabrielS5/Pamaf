@@ -35,7 +35,7 @@
                         <a href="#interactiune-utilizator">3. Maniera de interacţiune cu utilizatorul</a>
                     </li>
                     <li>
-                        <a href="#model-api-stocare">4. Modelul datelor, API-uri externe, soluţii de stocare</a>
+                        <a href="#model-api-stocare">5. Modelul datelor, API-uri externe, soluţii de stocare</a>
                     </li>
                     <li>
                         <a href="#membrii-echipei">4. Membrii echipei</a>
@@ -191,8 +191,14 @@
                     <h3>Entity Framework Core cu baza de date în Microsoft SQL</h3>
                         <p>
                             Entity Framework Core este un framework "Object/Relational Mapping (O/RM)" care oferă un mecanism automat de accesare 
-                            și stocare a datelor în baza de date.<br>Structured Query Language, adică SQL, este unul dintre cele mai folosite modele 
-                            relaţionale pentru gestionarea bazelor de date.
+                            și stocare a datelor în baza de date. Folosind acest framework putem reprezenta entitatile stocate in baza de date drept
+							obiecte, asta implica o definire mult mai usoara a relatiilor dintre acestea si faciliteaza modificarea ulterioara a
+							entitatilor in modul caracteristic POO.
+						<p/>
+						<p>	Baza de date a fost creata prin aproach-ul CodeFirst. Asta presupune scrierea
+							tuturor modelelor sub forma de clase, ca mai apoi Entity Framework Core sa genereze DB-ul pe baza acestora. Acest aproach
+							confera simplitate, viteza si un mediu POO cunoscut. Pentru anumite modificari a reprezentarii entitatilor ne vom folosii
+							de migratii a bazei de date.
                         </p>
                 </blockquote>
 
