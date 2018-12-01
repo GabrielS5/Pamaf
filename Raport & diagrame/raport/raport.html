@@ -35,6 +35,9 @@
                         <a href="#interactiune-utilizator">3. Maniera de interacţiune cu utilizatorul</a>
                     </li>
                     <li>
+                        <a href="#model-api-stocare">4. Modelul datelor, API-uri externe, soluţii de stocare</a>
+                    </li>
+                    <li>
                         <a href="#membrii-echipei">4. Membrii echipei</a>
                     </li>
                 </ul>
@@ -148,6 +151,61 @@
                     Jucătorul va putea concura cu prietenii săi.
                 </figcaption>
             </figure>
+
+        </section>
+
+        <section id="model-api-stocare">
+                <h2>5. API-uri externe, modelul datelor și soluţii de stocare</h2>
+                <blockquote>
+                    <h3> Facebook API </h3>
+                    <p>
+                        Vom folosi API-ul oferit de Facebook, pentru a-i oferi utilizatorului posibilitatea de a se loga pe pagină cu ajutorul
+                        contului său din această platformă și de a concura cu prietenii săi. 
+                    </p>
+                    <p>
+                        Concret, o să înregistrăm aplicația la <a href = "https://developers.facebook.com">https://developers.facebook.com</a>
+                        pentru a putea utiliza API-ul. Ne vom folosi de Facebook Login pentru a face logarea pe site și îi vom cere utilizatorului
+                        următoarele permisiuni:
+                        <ul>
+                            <li>user_photos - pentru a putea folosi poza acestuia la avatarul din joc</li>
+                            <li>user_friends - pentru a accesa lista de prieteni înregistrați în aplicație ai acestuia pentru o experiență completă a jocului</li>
+                        </ul>
+                    </p>
+                </blockquote>
+
+                <blockquote>
+                    <h3>Local Storage</h3>
+                    <p>
+                        Pentru stocarea progresului și a diferitelor informații folositoare despre utilizator am decis să
+                        folosim API-ul pus la dispoziție de HTML, Local Web Storage. Nu am recurs la cookie-uri deoarece ar
+                        îngreuna cererile spre server dar și pentru că această modalitate de stocarea a informațiilor este mai
+                        sigură, multe date putând fi stocate local fără a afecta performanța site-ului.
+                    </p>
+                    <p>
+                        În local storage am decis să stocăm pentru fiecare utilizator înregistrat detalii referitoare la datele de autentificare,
+                        nivelul la care se află acesta, respectiv scorul său.
+                    </p>
+                </blockquote>
+
+                <blockquote>
+                    <h3>Entity Framework Core cu baza de date în Microsoft SQL</h3>
+                        <p>
+                            Entity Framework Core este un framework "Object/Relational Mapping (O/RM)" care oferă un mecanism automat de accesare 
+                            și stocare a datelor în baza de date.<br>Structured Query Language, adică SQL, este unul dintre cele mai folosite modele 
+                            relaţionale pentru gestionarea bazelor de date.
+                        </p>
+                </blockquote>
+
+                <blockquote>
+                    <h3>API-ul aplicației</h3>
+                    <p>
+                        Pentru acest API ne vom folosi de .NET Core și va fi utilizat pentru a-i asigura utilizatorului o autentificare interactivă,
+                        adică acesta va avea progresul din cadrul jocului salvat. De asemenea, va fi folosit pentru a face rost de date legate de utilizatori 
+                        (high score, ultimul nivel jucat, etc.) și pentru a stoca anumite resurse folosite pentru crearea jocului (resurse 
+                        json care reprezintă planul corpului C,
+                        resurse json cu bucăți de hartă ce vor fi folosite de către aplicația client pentru a genera random nivele).
+                    </p>
+                </blockquote>
 
         </section>
 
