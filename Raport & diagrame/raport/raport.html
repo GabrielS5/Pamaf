@@ -35,10 +35,13 @@
                         <a href="#interactiune-utilizator">3. Maniera de interacţiune cu utilizatorul</a>
                     </li>
                     <li>
-                        <a href="#model-api-stocare">5. Modelul datelor, API-uri externe, soluţii de stocare</a>
+                        <a href="#model-api-stocare">4. Modelul datelor, API-uri externe, soluţii de stocare</a>
                     </li>
                     <li>
-                        <a href="#membrii-echipei">4. Membrii echipei</a>
+                        <a href="#functionalitate">5. Modul de funcționare</a>
+                    </li>
+                    <li>
+                        <a href="#membrii-echipei">6. Membrii echipei</a>
                     </li>
                 </ul>
             </aside>
@@ -115,13 +118,15 @@
             </figure>
 
         </section>
+
         <section id="interactiune-utilizator">
             <h2>3. Maniera de interacţiune cu utilizatorul</h2>
             <blockquote>
                 <h3> Utilizatori care nu se loghează </h3>
                 <p>
-                    Deoarece nu putem impune unui vizitator al paginii să se logheze pentru a juca, acesta va avea acces la joc fără ca scorul
-                    său să fie salvat.
+                    Deoarece nu putem impune unui vizitator al paginii să se logheze pentru a juca, acesta va avea acces la joc ca și jucător de tip 
+                    guest, fără ca scorul
+                    său să fie salvat. Totuși, acesta poate selecta anul universitar (1,2 sau 3), acest lucru modificând dificultatea jocului.
                 </p>
             </blockquote>
             <blockquote>
@@ -132,16 +137,23 @@
                     de help care conține regulile jocului.
                 </p>
                 <p>
-                    După cum spuneam, labirintul va fi reprezentat de harta corpului C, iar în funcţie de nivelul de studiu al jucătorului, acesta
-                    va fi plasat la un anumit etaj (fiecare clasa de la un etaj reprezintă un nivel generat aleator). Scopul
+                    După cum spuneam, labirintul va fi reprezentat de harta corpului C, iar în funcţie de nivelul de studiu al jucătorului(utilizatorul 
+                    are posibilitatea de a-și alege oricare dintre cei 3 ani universitari), acesta
+                    va fi plasat la un anumit etaj (fiecare clasa de la un etaj reprezintă un nivel generat aleator). Inițial, acesta va avea 3 vieți. Scopul
                     jucătorului este de a trece toate nivelele și de a coborî etajele până ajunge la ieșirea din facultate.
                     <br>
+                    Un utilizator își poate schimba anul universitar în orice moment, fără să piardă progresul jocului din anul pe care îl avea
+                    selectat precedent. Asta înseamnă că un utilizator va avea accesul la 3 salvări de joc, câte una pentru fiecare an universitar.
                 </p>
                 <p>
                     Pentru a face experiența mai interesantă, fantomele din joc vor avea înfăţişarea unor profesori ai Facultății de Informatică,
                     sau a unor prieteni din contul de facebook al jucătorului.
                     <br> Vor exista și anumite bonusuri în cadrul nivelelor care vor crește semnificativ scorul, și care vor
                     da șansa jucătorului să vâneze la rândul său fantomele.
+                </p>
+                <p>
+                    Atunci când un utilizator își pierde toate viețile, acesta va fi întrebat dacă dorește ca scorul obținut să îi fie salvat, iar sesiunea
+                    de joc va fi marcată ca și terminată. Același lucru se va întâmpla și atunci când utilizatorul câștigă.
                 </p>
             </blockquote>
 
@@ -155,7 +167,7 @@
         </section>
 
         <section id="model-api-stocare">
-                <h2>5. API-uri externe, modelul datelor și soluţii de stocare</h2>
+                <h2>4. API-uri externe, modelul datelor și soluţii de stocare</h2>
                 <blockquote>
                     <h3> Facebook API </h3>
                     <p>
@@ -166,11 +178,12 @@
                         Concret, o să înregistrăm aplicația la <a href = "https://developers.facebook.com">https://developers.facebook.com</a>
                         pentru a putea utiliza API-ul. Ne vom folosi de Facebook Login pentru a face logarea pe site și îi vom cere utilizatorului
                         următoarele permisiuni:
-                        <ul>
-                            <li>user_photos - pentru a putea folosi poza acestuia la avatarul din joc</li>
-                            <li>user_friends - pentru a accesa lista de prieteni înregistrați în aplicație ai acestuia pentru o experiență completă a jocului</li>
-                        </ul>
                     </p>
+                    <ul>
+                        <li>user_photos - pentru a putea folosi poza acestuia la avatarul din joc</li>
+                        <li>user_friends - pentru a accesa lista de prieteni înregistrați în aplicație ai acestuia pentru o experiență completă a jocului</li>
+                    </ul>
+                    
                 </blockquote>
 
                 <blockquote>
@@ -195,11 +208,21 @@
 							obiecte, ceea ce implică o definire mult mai ușoară a relațiilor dintre acestea și facilitează modificarea ulterioară a
 							entităților în modul caracteristic POO.
 						</p>
-						<p>	Baza de date a fost creată prin aproach-ul CodeFirst. Asta presupune scrierea
+						<p>	
+                            Baza de date a fost creată prin aproach-ul CodeFirst. Asta presupune scrierea
 							tuturor modelelor sub formă de clase, ca mai apoi, Entity Framework Core să genereze DB-ul pe baza acestora. Acest aproach
 							conferă simplitate, viteză și un mediu POO cunoscut. Pentru anumite modificări a reprezentării entităților ne vom folosi
 							de migrații a bazei de date.
                         </p>
+                        <p>
+                            Baza de date va conține tabelele cu câmpurile:
+                        </p>
+                        <ul>
+                            <li>Users: Id, Username, FacebookName</li>
+                            <li>GameDatas: Id, User, Year, Level, Score, DateModified, IsFinished</li>
+                            <li>Scores: Score, User, Date, Year</li>       
+                        </ul>
+                        
                 </blockquote>
 
                 <blockquote>
@@ -213,10 +236,65 @@
                     </p>
                 </blockquote>
 
+                <blockquote>
+                    <h3>Microdate</h3>
+                    <p>
+                        Ne-am folosit de scheme de microdate HTML5 pentru a specifica structurarea datelor, acestea fiind perechi de proprietăți
+                        nume—valoare „scufundate” în HTML. Crearea unei astfel de date se face prin atributul "itemscope", care stabilește 
+                        și domeniul de vizibilitate al microdatei, iar specificarea unei proprietăți se face prin atributul "itemprop".
+                    </p>
+                    <p>
+                        Am folosit colecția de vocabulare (scheme de date) oferită de <a href="https://schema.org/">schema.org</a>, în special de tipul
+                        de date <a href="https://schema.org/Game">Game</a>, folosind proprietățile: gameItem, gameLocation, quest, contributor, description
+                        pentru a specifica unele din funcționalitățile jocului, respectiv pentru a sublinia anumite detalii.
+                    </p>
+                </blockquote>
+
         </section>
 
+        <section id="functionalitate">
+            <h2>5. Modul de funcționare</h2>
+            <blockquote>
+                <h3>Login</h3>
+                <p>
+                    Atunci când un utilizator se loghează cu ajutorul platformei Facebook, aplicația îl va caută pe acesta în baza de date. 
+                    Dacă acest utilizator este nou, i se va crea o înregistrare în tabela de useri
+                    și i se vor inițializa atribute în Local Storage, iar dacă utilizatorul nu este nou, atunci aplicația va face un query la baza de date pentru a face rost de 
+                    ultima sesiune de joc a acestuia.
+                </p>  
+            </blockquote>
+
+            <blockquote>
+                <h3>Game</h3>
+                <p>
+                    Atunci când utilizatorul intră pe pagina "Game", aplicația va accesa Local Storage pentru a face rost de id-ul utilizatorului și de anul universitar selectat de acesta.
+                    Avand aceste date, se va face un request la API pentru a primi ultima sesiune de joc neterminată pentru utilizatorul respectiv în anul ales. Dacă nu există o astfel de 
+                    sesiune se va crea una. Dacă totuși există, atunci aplicația va știi numărul de vieți rămase, level-urile terminate, respectiv scorul acumulat până atunci și va inițializa 
+                    corect clasa Game.
+                </p>
+                <p>
+                    În acest moment utilizatorul poate naviga printr-o hartă 2D a corpului C, intrarea pe o ușă reprezentând începerea unui nivel. Pentru fiecare nivel
+                    aplicația va genera aleator o hartă(prin clasa MapGenerator) care va fi populată de către 4 inamici și de catre jucător. Aceste variabile vor fi mai apoi transmise
+                    către clasa "LevelRunner" care va prelua interfața grafică și va rula jocul "Pamaf" cu parametrii corecți.
+                </p>
+                <p>
+                    Când jucătorul pierde/câștigă, clasa "LevelRunner" va
+                    notifica clasa "Game" în legatură cu cele întâmplate, iar aceasta va reacționa corespunzător.
+                </p>
+            </blockquote>
+
+            <blockquote>
+                <h3>Statistici</h3>
+                <p>
+                    Paginile de statistici pentru jucător, cât și pentru leaderboard vor fi create prin request-uri simple la API.
+                    Acesta va transmite resursele necesare ce vor fi procesate de către aplicația client.
+                </p>
+            </blockquote>
+    
+        </section>
+            
         <section id="membrii-echipei">
-            <h2>4. Membrii echipei</h2>
+            <h2>6. Membrii echipei</h2>
             <ol>
                 <li typeof="sa:ContributorRole" property="schema:author">
                     <a href="https://github.com/GabrielS5" typeof="schema:Person">
