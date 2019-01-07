@@ -12,9 +12,12 @@ class LevelGenerator {
 	}
 
 	getRandomLevel() {
-		let topPart = cloneMatrix(this.topLevelParts[Math.floor((Math.random() * (this.topLevelParts.length - 1)))].blocks);
-		let middlePart = cloneMatrix(this.middleLevelParts[Math.floor((Math.random() * (this.middleLevelParts.length - 1)))].blocks);
-		let bottomPart = cloneMatrix(this.bottomLevelParts[Math.floor((Math.random() * (this.bottomLevelParts.length - 1)))].blocks);
+		let topPart = cloneMatrix(this.topLevelParts[this.topLevelParts.length - 2].blocks);
+		let middlePart = cloneMatrix(this.middleLevelParts[this.middleLevelParts.length - 2].blocks);
+		let bottomPart = cloneMatrix(this.bottomLevelParts[this.bottomLevelParts.length - 2].blocks);
+		//let topPart = cloneMatrix(this.topLevelParts[Math.floor((Math.random() * (this.topLevelParts.length - 1)))].blocks);
+		//let middlePart = cloneMatrix(this.middleLevelParts[Math.floor((Math.random() * (this.middleLevelParts.length - 1)))].blocks);
+		//let bottomPart = cloneMatrix(this.bottomLevelParts[Math.floor((Math.random() * (this.bottomLevelParts.length - 1)))].blocks);
 
 		let level = [];
 
