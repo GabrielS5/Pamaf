@@ -121,14 +121,14 @@ function getCoinMap(level) {
 	return coinMap;
 }
 
-function checkCollision(player, levels) {
-	for (let i = 0; i < levels.length; i++) {
+function checkCollision(player, structures) {
+	for (let i = 0; i < structures.length; i++) {
 		if (
 			!(
-				player.x > levels[i].x + levels[i].width ||
-				player.x + player.width < levels[i].x ||
-				player.y > levels[i].y + levels[i].height ||
-				player.y + player.height < levels[i].y
+				player.x > structures[i].x + structures[i].width ||
+				player.x + player.width < structures[i].x ||
+				player.y > structures[i].y + structures[i].height ||
+				player.y + player.height < structures[i].y
 			)
 		)
 			return i;

@@ -1,21 +1,39 @@
-﻿[  
-   {  
-      "walls":[  
-         {  
-            "x":0,
-            "y":0,
-            "width":50,
-            "height":700,
-            "type":"wall"
-         },
-         {  
-            "x":0,
-            "y":0,
-            "width":1000,
-            "height":50,
-            "type":"wall"
-         }
-      ],
+﻿[
+  {
+    "playerStart": {
+      "x": 200,
+      "y": 200
+    },
+    "walls": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 700,
+        "type": "wall"
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 50,
+        "type": "wall"
+      },
+      {
+        "x": 500,
+        "y": 0,
+        "width": 50,
+        "height": 1000,
+        "type": "wall"
+      },
+      {
+        "x": 0,
+        "y": 900,
+        "width": 1000,
+        "height": 50,
+        "type": "wall"
+      }
+    ],
     "levels": [
       {
         "x": 400,
@@ -36,5 +54,5 @@
         "difficulty": 0.8
       }
     ]
-   }
+  }
 ]

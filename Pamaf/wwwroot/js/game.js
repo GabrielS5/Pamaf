@@ -1,6 +1,5 @@
 class Game {
-	constructor(player, canvas, context, levelGenerator) {
-		this.player = player;
+	constructor(canvas, context, levelGenerator) {
 		this.canvas = canvas;
 		this.context = context;
 		this.isReady = false;
@@ -8,7 +7,18 @@ class Game {
 		this.levelGenerator = levelGenerator;
 		this.levelRunner = new LevelRunner(this, context);
 		this.levelRunning = false;
-		this.currentMap = 0;
+	}
+
+	changeMap(map) {
+		this.currentMap = map;
+		this.player = new Player(
+			this.gameMap[this.currentMap].playerStart.x,
+			this.gameMap[this.currentMap].playerStart.y,
+			50,
+			50,
+			this.gameMap[this.currentMap],
+			this.context
+		);
 	}
 
 	runLevel(difficulty, levelNumber) {
@@ -21,14 +31,20 @@ class Game {
 		if (result.success) {
 			console.log(result);
 		} else {
-			console.log('salamn');
+			console.log('salam');
 		}
 	}
 
 	async init() {
 		await this.loadMap(this);
 
-		await levelGenerator.init();
+		await this.levelRunner.init();
+
+		await this.levelGenerator.init();
+
+		this.changeMap(0);
+
+		this.isReady = true;
 	}
 
 	draw() {
@@ -64,28 +80,27 @@ class Game {
 	async loadMap(game) {
 		var xobj = new XMLHttpRequest();
 		xobj.overrideMimeType('application/json');
-		xobj.open('GET', '../json/map.json', true);
-		xobj.onreadystatechange = function() {
-			if (xobj.readyState == 4 && xobj.status == '200') {
-				game.gameMap = JSON.parse(xobj.responseText);
-				game.isReady = true;
-			}
-		};
+		xobj.open('GET', '../json/map.json', false);
 		xobj.send(null);
+		if (xobj.status == '200') {
+			game.gameMap = JSON.parse(xobj.responseText);
+		}
 	}
+
 	input(key) {
 		if (this.levelRunning) {
 			this.levelRunner.input(key);
 		} else {
 			if (key == 13) {
 				let level = checkCollision(this.player, this.gameMap[this.currentMap].levels);
-				console.log(level);
-				if(level != -1){
-					console.log(this.gameMap[this.currentMap].levels[level].difficulty);
-					this.runLevel(this.gameMap[this.currentMap].levels[level].difficulty, this.gameMap[this.currentMap].levels[level].number);
+				if (level != -1) {
+					this.runLevel(
+						this.gameMap[this.currentMap].levels[level].difficulty,
+						this.gameMap[this.currentMap].levels[level].number
+					);
 				}
 			} else {
-				player.input(key);
+				this.player.input(key);
 			}
 		}
 	}

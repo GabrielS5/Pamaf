@@ -7,6 +7,10 @@ class LevelRunner {
 		this.enemies = [];
 	}
 
+	async init() {
+		await this.loadMapTextures(this);
+	}
+
 	run(level, difficulty, levelNumber) {
 		this.difficulty = difficulty;
 		this.levelNumber = levelNumber;
@@ -105,8 +109,42 @@ class LevelRunner {
 		this.checkEndGame();
 	}
 
+	getTexture(line, column) {
+		if (
+			line == 0 ||
+			line == this.level.length - 1 ||
+			column == 0 ||
+			column == this.level[0].length - 1
+		)
+			return this.mapTextures[12];
+		let neighborString = '';
+		neighborString += this.level[line][column + 1];
+		neighborString += this.level[line + 1][column + 1];
+		neighborString += this.level[line + 1][column];
+		neighborString += this.level[line + 1][column - 1];
+		neighborString += this.level[line][column - 1];
+		neighborString += this.level[line - 1][column - 1];
+		neighborString += this.level[line - 1][column];
+		neighborString += this.level[line - 1][column + 1];
+
+		if (neighborString == '01111100') return this.mapTextures[0];
+		else if (neighborString == '00011111') return this.mapTextures[1];
+		else if (neighborString == '11000111') return this.mapTextures[2];
+		else if (neighborString == '11110001') return this.mapTextures[3];
+		else if (neighborString == '00011100' || neighborString == '00001100' || neighborString == '00011000') return this.mapTextures[4];
+		else if (neighborString == '00000111' || neighborString == '00000011' || neighborString == '00000110') return this.mapTextures[5];
+		else if (neighborString == '11000001' || neighborString == '10000001' || neighborString == '11000000') return this.mapTextures[6];
+		else if (neighborString == '01110000' || neighborString == '00110000' || neighborString == '01100000') return this.mapTextures[7];
+		else if (neighborString == '00000001') return this.mapTextures[8];
+		else if (neighborString == '01000000') return this.mapTextures[9];
+		else if (neighborString == '00010000') return this.mapTextures[10];
+		else if (neighborString == '00000100') return this.mapTextures[11];
+
+		return this.mapTextures[12];
+	}
+
 	draw() {
-		this.context.fillStyle = 'cyan';
+		this.context.fillStyle = 'white';
 		this.context.fillRect(0, 0, WindowWidth, WindowHeight);
 
 		let verticalOffset = (WindowHeight - this.level.length * LevelCell) / 2;
@@ -118,6 +156,13 @@ class LevelRunner {
 				if (this.level[i][j] == 0) {
 					this.context.fillStyle = 'black';
 					this.context.fillRect(
+						j * LevelCell + horizontalOffset,
+						i * LevelCell + verticalOffset,
+						LevelCell,
+						LevelCell
+					);
+					this.context.drawImage(
+						this.getTexture(i, j),
 						j * LevelCell + horizontalOffset,
 						i * LevelCell + verticalOffset,
 						LevelCell,
@@ -155,5 +200,61 @@ class LevelRunner {
 
 	input(key) {
 		this.player.input(key);
+	}
+
+	async loadMapTextures() {
+		this.mapTextures = [];
+
+		let texture = new Image();
+		texture.src = '../img/map/corner1.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/corner2.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/corner3.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/corner4.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/half1.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/half2.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/half3.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/half4.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/innercorner1.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/innercorner2.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/innercorner3.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/innercorner4.bmp';
+		this.mapTextures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/map/whole.bmp';
+		this.mapTextures.push(texture);
 	}
 }

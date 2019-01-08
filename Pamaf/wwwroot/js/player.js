@@ -1,10 +1,11 @@
 class Player {
-	constructor(x, y, width, height, context) {
+	constructor(x, y, width, height, gameMap, context) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.context = context;
+		this.gameMap = gameMap;
 		this.movingLeft = false;
 		this.movingRight = false;
 		this.movingUp = false;
@@ -12,6 +13,7 @@ class Player {
 		this.horizontalSpeed = 0;
 		this.verticalSpeed = 0;
 	}
+
 	draw() {
 		this.context.fillStyle = 'black';
 		this.context.fillRect(this.x, this.y, this.width, this.height);
@@ -32,7 +34,28 @@ class Player {
 		}
 
 		this.x += this.horizontalSpeed;
+		let horizontalCollision = checkCollision(this, this.gameMap.walls);
+		if (horizontalCollision != -1) {
+			if (this.gameMap.walls[horizontalCollision].x < this.x)
+				this.x +=
+					this.gameMap.walls[horizontalCollision].x +
+					this.gameMap.walls[horizontalCollision].width -
+					this.x +
+					0.1;
+			else this.x -= this.x + this.width - this.gameMap.walls[horizontalCollision].x + 0.1;
+		}
+
 		this.y += this.verticalSpeed;
+		let verticalCollision = checkCollision(this, this.gameMap.walls);
+		if (verticalCollision != -1) {
+			if (this.gameMap.walls[verticalCollision].y < this.y)
+				this.y +=
+					this.gameMap.walls[verticalCollision].y +
+					this.gameMap.walls[verticalCollision].height -
+					this.y +
+					0.1;
+			else this.y -= this.y + this.height - this.gameMap.walls[verticalCollision].y + 0.1;
+		}
 
 		if (this.horizontalSpeed >= -1 && this.horizontalSpeed <= 1) {
 			this.horizontalSpeed = 0;
