@@ -110,22 +110,28 @@ class LevelRunner {
 	}
 
 	getTexture(line, column) {
-		if (
-			line == 0 ||
-			line == this.level.length - 1 ||
-			column == 0 ||
-			column == this.level[0].length - 1
-		)
-			return this.mapTextures[12];
+		if(column == 0 && line == this.level.length - 1) 
+			return this.mapTextures[8];
+		if(column == 0 && line == 0) 
+			return this.mapTextures[9];
+		if(column == this.level[0].length - 1 && line == 0) 
+			return this.mapTextures[10];
+		if(column == this.level[0].length - 1 && line == this.level.length - 1) 
+			return this.mapTextures[11];
 		let neighborString = '';
-		neighborString += this.level[line][column + 1];
-		neighborString += this.level[line + 1][column + 1];
-		neighborString += this.level[line + 1][column];
-		neighborString += this.level[line + 1][column - 1];
-		neighborString += this.level[line][column - 1];
-		neighborString += this.level[line - 1][column - 1];
-		neighborString += this.level[line - 1][column];
-		neighborString += this.level[line - 1][column + 1];
+
+		neighborString += column < this.level[0].length - 1 ? this.level[line][column + 1] : 0;
+		neighborString += column < this.level[0].length - 1 && line < this.level.length - 1 ? this.level[line + 1][column + 1] : 0;
+		neighborString += line < this.level.length - 1 ? this.level[line + 1][column] : 0;
+		neighborString += column > 0 && line < this.level.length - 1 ? this.level[line + 1][column - 1] : 0;
+		neighborString += column > 0 ? this.level[line][column - 1] : 0;
+		neighborString += column > 0 && line > 0 ? this.level[line - 1][column - 1] : 0;
+		neighborString += line > 0 ? this.level[line - 1][column] : 0;
+		neighborString += column < this.level[0].length - 1 && line > 0 ? this.level[line - 1][column + 1] : 0;
+
+		if(column == 0) {
+
+		}
 
 		if (neighborString == '01111100') return this.mapTextures[0];
 		else if (neighborString == '00011111') return this.mapTextures[1];
@@ -144,23 +150,19 @@ class LevelRunner {
 	}
 
 	draw() {
-		this.context.fillStyle = 'white';
+		this.context.fillStyle = 'rgb(14,112,209)';
 		this.context.fillRect(0, 0, WindowWidth, WindowHeight);
 
 		let verticalOffset = (WindowHeight - this.level.length * LevelCell) / 2;
 		let horizontalOffset = (WindowWidth - this.level[0].length * LevelCell) / 2;
 
+		this.context.fillStyle = 'pink';
+		this.context.fillRect(horizontalOffset, verticalOffset, WindowWidth - 2 * horizontalOffset, WindowHeight - 2 * verticalOffset);
+
 		//drawing map
 		for (let i = 0; i < this.level.length; i++) {
 			for (let j = 0; j < this.level[i].length; j++) {
 				if (this.level[i][j] == 0) {
-					this.context.fillStyle = 'black';
-					this.context.fillRect(
-						j * LevelCell + horizontalOffset,
-						i * LevelCell + verticalOffset,
-						LevelCell,
-						LevelCell
-					);
 					this.context.drawImage(
 						this.getTexture(i, j),
 						j * LevelCell + horizontalOffset,
@@ -206,51 +208,51 @@ class LevelRunner {
 		this.mapTextures = [];
 
 		let texture = new Image();
-		texture.src = '../img/map/corner1.bmp';
+		texture.src = '../img/map/corner1.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/corner2.bmp';
+		texture.src = '../img/map/corner2.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/corner3.bmp';
+		texture.src = '../img/map/corner3.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/corner4.bmp';
+		texture.src = '../img/map/corner4.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/half1.bmp';
+		texture.src = '../img/map/half1.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/half2.bmp';
+		texture.src = '../img/map/half2.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/half3.bmp';
+		texture.src = '../img/map/half3.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/half4.bmp';
+		texture.src = '../img/map/half4.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/innercorner1.bmp';
+		texture.src = '../img/map/innercorner1.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/innercorner2.bmp';
+		texture.src = '../img/map/innercorner2.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/innercorner3.bmp';
+		texture.src = '../img/map/innercorner3.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();
-		texture.src = '../img/map/innercorner4.bmp';
+		texture.src = '../img/map/innercorner4.png';
 		this.mapTextures.push(texture);
 
 		texture = new Image();

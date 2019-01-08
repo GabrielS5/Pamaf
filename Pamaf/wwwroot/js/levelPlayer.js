@@ -8,7 +8,7 @@ class LevelPlayer {
 		this.context = context;
 		this.direction = 0;
 		this.nextDirection = 0;
-		this.size = LevelCell - 10;
+		this.size = LevelCell;
 		this.line = Math.floor(this.y / LevelCell);
 		this.column = Math.floor(this.x / LevelCell);
 		this.hearts = hearts;

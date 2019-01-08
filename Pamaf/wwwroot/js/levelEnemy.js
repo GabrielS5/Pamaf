@@ -9,7 +9,7 @@ class LevelEnemy {
 		this.context = context;
 		this.direction = 0;
 		this.nextDirection = 0;
-		this.size = LevelCell - 10;
+		this.size = LevelCell;
 		this.enemyType = enemyType;
 		this.line = Math.floor(this.y / LevelCell);
 		this.column = Math.floor(this.x / LevelCell);
@@ -163,7 +163,7 @@ class LevelEnemy {
 
 	goSleep(amount) {
 		this.mode = 1;
-		this.x = LevelCell * (11 + this.enemyType);
+		this.x = LevelCell * (9.75 + this.enemyType * 1.5);
 		this.y = LevelCell * 14;
 		this.sleepCounter = amount;
 	}
