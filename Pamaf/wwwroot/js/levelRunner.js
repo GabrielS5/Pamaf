@@ -106,6 +106,9 @@ class LevelRunner {
 			enemy.update();
 		});
 
+		this.game.player.hearts = this.player.hearts;
+		this.game.player.score = this.player.score;
+
 		this.checkEndGame();
 	}
 

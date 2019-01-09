@@ -38,6 +38,8 @@ class Game {
 	async init() {
 		await this.loadMap(this);
 
+		await this.loadTextures();
+
 		await this.levelRunner.init();
 
 		await this.levelGenerator.init();
@@ -67,6 +69,30 @@ class Game {
 
 			this.player.draw();
 		}
+		this.context.fillStyle = 'rgb(10,80,150)';
+		this.context.fillRect(0, WindowHeight, this.canvas.width, BottomMenuHeight);
+
+		let bottomMenuStart = BottomMenuHeight / 4;
+		let bottomMenuInfoSize = BottomMenuHeight / 2;
+
+		for (let i = 0; i < this.player.hearts; i++) {
+			this.context.drawImage(
+				this.textures[0],
+				25 + (25 + bottomMenuInfoSize) * i,
+				bottomMenuStart + WindowHeight,
+				bottomMenuInfoSize,
+				bottomMenuInfoSize
+			);
+		}
+
+		this.context.fillStyle = 'yellow';
+		this.context.font = bottomMenuInfoSize + 'px Arcade Classic';
+		this.context.fillText(
+			'Hello World',
+			(2 * WindowWidth) / 3,
+			bottomMenuStart + WindowHeight + bottomMenuInfoSize
+		
+		);
 	}
 
 	update() {
@@ -103,5 +129,13 @@ class Game {
 				this.player.input(key);
 			}
 		}
+	}
+
+	async loadTextures() {
+		this.textures = [];
+
+		let texture = new Image();
+		texture.src = '../img/heart.png';
+		this.textures.push(texture);
 	}
 }
