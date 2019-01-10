@@ -75,9 +75,9 @@ class Game {
 		let bottomMenuStart = BottomMenuHeight / 4;
 		let bottomMenuInfoSize = BottomMenuHeight / 2;
 
-		for (let i = 0; i < this.player.hearts; i++) {
+		for (let i = 0; i < 3; i++) {
 			this.context.drawImage(
-				this.textures[0],
+				this.textures[this.player.hearts > i ? 0 : 1],
 				25 + (25 + bottomMenuInfoSize) * i,
 				bottomMenuStart + WindowHeight,
 				bottomMenuInfoSize,
@@ -86,12 +86,16 @@ class Game {
 		}
 
 		this.context.fillStyle = 'yellow';
-		this.context.font = bottomMenuInfoSize + 'px Arcade Classic';
+		this.context.font = bottomMenuInfoSize + 'px ArcadeRegular';
+
+		let scoreString = this.player.score.toString();
+
+		while (scoreString.length < 6) scoreString = '0' + scoreString;
+
 		this.context.fillText(
-			'Hello World',
-			(2 * WindowWidth) / 3,
-			bottomMenuStart + WindowHeight + bottomMenuInfoSize
-		
+			'SCORE: ' + scoreString,
+			WindowWidth - 7 * bottomMenuInfoSize,
+			WindowHeight + BottomMenuHeight - bottomMenuStart - bottomMenuInfoSize / 3
 		);
 	}
 
@@ -136,6 +140,10 @@ class Game {
 
 		let texture = new Image();
 		texture.src = '../img/heart.png';
+		this.textures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/brokenHeart.png';
 		this.textures.push(texture);
 	}
 }

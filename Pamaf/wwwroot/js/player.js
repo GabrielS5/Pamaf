@@ -12,6 +12,8 @@ class Player {
 		this.movingDown = false;
 		this.horizontalSpeed = 0;
 		this.verticalSpeed = 0;
+		this.hearts = 3;
+		this.score = 0;
 	}
 
 	draw() {
