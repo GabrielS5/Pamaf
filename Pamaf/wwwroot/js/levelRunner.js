@@ -50,6 +50,7 @@ class LevelRunner {
 		this.enemies.push(
 			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 4, this.difficulty, this.context)
 		);
+		
 	}
 
 	checkEndGame() {
@@ -159,7 +160,7 @@ class LevelRunner {
 		let verticalOffset = (WindowHeight - this.level.length * LevelCell) / 2;
 		let horizontalOffset = (WindowWidth - this.level[0].length * LevelCell) / 2;
 
-		this.context.fillStyle = 'pink';
+		this.context.fillStyle = 'cyan';
 		this.context.fillRect(horizontalOffset, verticalOffset, WindowWidth - 2 * horizontalOffset, WindowHeight - 2 * verticalOffset);
 
 		//drawing map

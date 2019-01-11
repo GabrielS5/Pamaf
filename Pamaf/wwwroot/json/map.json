@@ -1,37 +1,29 @@
 ﻿[
   {
-    "playerStart": {
-      "x": 200,
-      "y": 200
-    },
     "walls": [
       {
         "x": 0,
         "y": 0,
         "width": 50,
-        "height": 700,
-        "type": "wall"
+        "height": 700
       },
       {
         "x": 0,
         "y": 0,
         "width": 1000,
-        "height": 50,
-        "type": "wall"
+        "height": 50
       },
       {
         "x": 500,
         "y": 0,
         "width": 50,
-        "height": 1000,
-        "type": "wall"
+        "height": 1000
       },
       {
         "x": 0,
         "y": 900,
         "width": 1000,
-        "height": 50,
-        "type": "wall"
+        "height": 50
       }
     ],
     "levels": [
@@ -54,5 +46,13 @@
         "difficulty": 0.8
       }
     ]
+  },
+  {
+    "walls": {
+
+    },
+    "levels": {
+
+    }
   }
 ]
