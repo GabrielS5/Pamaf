@@ -5,31 +5,55 @@
         "x": 0,
         "y": 0,
         "width": 50,
-        "height": 700
+        "height": 600
       },
       {
         "x": 0,
         "y": 0,
-        "width": 1000,
+        "width": 600,
         "height": 50
       },
       {
-        "x": 500,
+        "x": 600,
         "y": 0,
         "width": 50,
-        "height": 1000
+        "height": 400
       },
       {
-        "x": 0,
-        "y": 900,
-        "width": 1000,
+        "x": 600,
+        "y": 400,
+        "width": 250,
         "height": 50
+      },
+      {
+        "x": 850,
+        "y": 400,
+        "width": 50,
+        "height": 550
+      },
+      {
+        "x": -600,
+        "y": 900,
+        "width": 1450,
+        "height": 50
+      },
+      {
+        "x": -600,
+        "y": 550,
+        "width": 600,
+        "height": 50
+      },
+      {
+        "x": -600,
+        "y": 550,
+        "width": 50,
+        "height": 350
       }
     ],
     "levels": [
       {
-        "x": 400,
-        "y": 400,
+        "x": 0,
+        "y": 150,
         "width": 100,
         "height": 100,
         "type": "level",
@@ -37,8 +61,35 @@
         "difficulty": 0.5
       },
       {
-        "x": 600,
-        "y": 600,
+        "x": 650,
+        "y": 850,
+        "width": 100,
+        "height": 100,
+        "type": "level",
+        "number": 1,
+        "difficulty": 0.5
+      },
+      {
+        "x": 550,
+        "y": 150,
+        "width": 100,
+        "height": 100,
+        "type": "level",
+        "number": 2,
+        "difficulty": 0.8
+      },
+      {
+        "x": -100,
+        "y": 850,
+        "width": 100,
+        "height": 100,
+        "type": "level",
+        "number": 2,
+        "difficulty": 0.8
+      },
+      {
+        "x": -450,
+        "y": 850,
         "width": 100,
         "height": 100,
         "type": "level",
@@ -48,11 +99,183 @@
     ]
   },
   {
-    "walls": {
 
-    },
-    "levels": {
+    "walls": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 600
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "width": 650,
+        "height": 50
+      },
+      {
+        "x": 650,
+        "y": -300,
+        "width": 50,
+        "height": 350
+      },
+      {
+        "x": 650,
+        "y": -300,
+        "width": 200,
+        "height": 50
+      },
+      {
+        "x": 850,
+        "y": -300,
+        "width": 50,
+        "height": 1250
+      },
+      {
+        "x": 650,
+        "y": 0,
+        "width": 50,
+        "height": 700
+      },
+      {
+        "x": 200,
+        "y": 0,
+        "width": 50,
+        "height": 700
+      },
+      {
+        "x": 200,
+        "y": 700,
+        "width": 500,
+        "height": 50
+      },
+      {
+        "x": -800,
+        "y": 900,
+        "width": 1650,
+        "height": 50
+      },
+      {
+        "x": -800,
+        "y": 550,
+        "width": 800,
+        "height": 50
+      },
+      {
+        "x": -800,
+        "y": 550,
+        "width": 50,
+        "height": 350
+      },
+      {
+        "x": 0,
+        "y": 800,
+        "width": 50,
+        "height": 100
+      }
+    ],
+    "levels": [
+      {
+        "x": -400,
+        "y": 850,
+        "width": 100,
+        "height": 100,
+        "type": "level",
+        "number": 2,
+        "difficulty": 0.8
+      },
+      {
+        "x": -600,
+        "y": 850,
+        "width": 100,
+        "height": 100,
+        "type": "level",
+        "number": 2,
+        "difficulty": 0.8
+      }
+    ]
 
-    }
+  },
+  {
+    "walls": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 400
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "width": 650,
+        "height": 50
+      },
+      {
+        "x": 650,
+        "y": 200,
+        "width": 200,
+        "height": 50
+      },
+      {
+        "x": 850,
+        "y": 200,
+        "width": 50,
+        "height": 800
+      },
+      {
+        "x": 650,
+        "y": 0,
+        "width": 50,
+        "height": 400
+      },
+      {
+        "x": -400,
+        "y": 400,
+        "width": 450,
+        "height": 50
+      },
+      {
+        "x": -400,
+        "y": 400,
+        "width": 50,
+        "height": 550
+      },
+      {
+        "x": -400,
+        "y": 950,
+        "width": 1250,
+        "height": 50
+      },
+      {
+        "x": -150,
+        "y": 400,
+        "width": 50,
+        "height": 300
+      },
+      {
+        "x": -400,
+        "y": 700,
+        "width": 300,
+        "height": 50
+      },
+      {
+        "x": -150,
+        "y": 900,
+        "width": 50,
+        "height": 50
+      }
+
+    ],
+    "levels": [
+      {
+        "x": -300,
+        "y": 900,
+        "width": 100,
+        "height": 100,
+        "type": "level",
+        "number": 2,
+        "difficulty": 0.8
+      }
+    ]
   }
-]
+  ]
