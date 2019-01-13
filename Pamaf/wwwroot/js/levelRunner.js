@@ -17,19 +17,19 @@ class LevelRunner {
 		this.level = level;
 		let guiding = getGuiding(level);
 		this.coinMap = getCoinMap(level);
-		this.player = new LevelPlayer(30, 30, 3, this.level, 3, 0, this.context);
+		this.player = new LevelPlayer(30, 30, 7, this.level, 3, 0, this.context);
 		this.enemies = [];
 		this.enemies.push(
-			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 1, this.difficulty, this.context)
+			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 1, this.difficulty, this.context)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 2, this.difficulty, this.context)
+			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 2, this.difficulty, this.context)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 3, this.difficulty, this.context)
+			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 3, this.difficulty, this.context)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 4, this.difficulty, this.context)
+			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 4, this.difficulty, this.context)
 		);
 	}
 
@@ -39,18 +39,17 @@ class LevelRunner {
 		let guiding = getGuiding(this.level);
 		this.enemies = [];
 		this.enemies.push(
-			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 1, this.difficulty, this.context)
+			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 1, this.difficulty, this.context)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 2, this.difficulty, this.context)
+			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 2, this.difficulty, this.context)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 3, this.difficulty, this.context)
+			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 3, this.difficulty, this.context)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 7, this.level, guiding, this.player, 4, this.difficulty, this.context)
+			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 4, this.difficulty, this.context)
 		);
-		
 	}
 
 	checkEndGame() {
@@ -86,20 +85,16 @@ class LevelRunner {
 			});
 		}
 
-		// entity collisions
-		this.enemies.forEach(enemy => {
-			let eAverageLine = Math.floor((enemy.y + LevelCell / 2) / LevelCell);
-			let eAverageColumn = Math.floor((enemy.x + LevelCell / 2) / LevelCell);
-			if (pAverageLine == eAverageLine && pAverageColumn == eAverageColumn) {
-				if (enemy.mode == 2) {
-					enemy.goSleep(Math.floor(200 - 100 * this.difficulty));
-					this.player.score += 200;
-				} else {
-					this.player.hearts--;
-					this.resetLevel();
-				}
+		let collision = checkCollision(this.player, this.enemies);
+		if (collision != -1) {
+			if (this.enemies[collision].mode == 2) {
+				this.enemies[collision].goSleep(Math.floor(200 - 100 * this.difficulty));
+				this.player.score += 200;
+			} else {
+				this.player.hearts--;
+				this.resetLevel();
 			}
-		});
+		}
 
 		this.player.update();
 
@@ -114,37 +109,58 @@ class LevelRunner {
 	}
 
 	getTexture(line, column) {
-		if(column == 0 && line == this.level.length - 1) 
-			return this.mapTextures[8];
-		if(column == 0 && line == 0) 
-			return this.mapTextures[9];
-		if(column == this.level[0].length - 1 && line == 0) 
-			return this.mapTextures[10];
-		if(column == this.level[0].length - 1 && line == this.level.length - 1) 
+		if (column == 0 && line == this.level.length - 1) return this.mapTextures[8];
+		if (column == 0 && line == 0) return this.mapTextures[9];
+		if (column == this.level[0].length - 1 && line == 0) return this.mapTextures[10];
+		if (column == this.level[0].length - 1 && line == this.level.length - 1)
 			return this.mapTextures[11];
 		let neighborString = '';
 
 		neighborString += column < this.level[0].length - 1 ? this.level[line][column + 1] : 0;
-		neighborString += column < this.level[0].length - 1 && line < this.level.length - 1 ? this.level[line + 1][column + 1] : 0;
+		neighborString +=
+			column < this.level[0].length - 1 && line < this.level.length - 1
+				? this.level[line + 1][column + 1]
+				: 0;
 		neighborString += line < this.level.length - 1 ? this.level[line + 1][column] : 0;
-		neighborString += column > 0 && line < this.level.length - 1 ? this.level[line + 1][column - 1] : 0;
+		neighborString +=
+			column > 0 && line < this.level.length - 1 ? this.level[line + 1][column - 1] : 0;
 		neighborString += column > 0 ? this.level[line][column - 1] : 0;
 		neighborString += column > 0 && line > 0 ? this.level[line - 1][column - 1] : 0;
 		neighborString += line > 0 ? this.level[line - 1][column] : 0;
-		neighborString += column < this.level[0].length - 1 && line > 0 ? this.level[line - 1][column + 1] : 0;
+		neighborString +=
+			column < this.level[0].length - 1 && line > 0 ? this.level[line - 1][column + 1] : 0;
 
-		if(column == 0) {
-
+		if (column == 0) {
 		}
 
 		if (neighborString == '01111100') return this.mapTextures[0];
 		else if (neighborString == '00011111') return this.mapTextures[1];
 		else if (neighborString == '11000111') return this.mapTextures[2];
 		else if (neighborString == '11110001') return this.mapTextures[3];
-		else if (neighborString == '00011100' || neighborString == '00001100' || neighborString == '00011000') return this.mapTextures[4];
-		else if (neighborString == '00000111' || neighborString == '00000011' || neighborString == '00000110') return this.mapTextures[5];
-		else if (neighborString == '11000001' || neighborString == '10000001' || neighborString == '11000000') return this.mapTextures[6];
-		else if (neighborString == '01110000' || neighborString == '00110000' || neighborString == '01100000') return this.mapTextures[7];
+		else if (
+			neighborString == '00011100' ||
+			neighborString == '00001100' ||
+			neighborString == '00011000'
+		)
+			return this.mapTextures[4];
+		else if (
+			neighborString == '00000111' ||
+			neighborString == '00000011' ||
+			neighborString == '00000110'
+		)
+			return this.mapTextures[5];
+		else if (
+			neighborString == '11000001' ||
+			neighborString == '10000001' ||
+			neighborString == '11000000'
+		)
+			return this.mapTextures[6];
+		else if (
+			neighborString == '01110000' ||
+			neighborString == '00110000' ||
+			neighborString == '01100000'
+		)
+			return this.mapTextures[7];
 		else if (neighborString == '00000001') return this.mapTextures[8];
 		else if (neighborString == '01000000') return this.mapTextures[9];
 		else if (neighborString == '00010000') return this.mapTextures[10];
@@ -161,7 +177,12 @@ class LevelRunner {
 		let horizontalOffset = (WindowWidth - this.level[0].length * LevelCell) / 2;
 
 		this.context.fillStyle = 'cyan';
-		this.context.fillRect(horizontalOffset, verticalOffset, WindowWidth - 2 * horizontalOffset, WindowHeight - 2 * verticalOffset);
+		this.context.fillRect(
+			horizontalOffset,
+			verticalOffset,
+			WindowWidth - 2 * horizontalOffset,
+			WindowHeight - 2 * verticalOffset
+		);
 
 		//drawing map
 		for (let i = 0; i < this.level.length; i++) {

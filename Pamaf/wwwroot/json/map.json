@@ -45,7 +45,11 @@
         "number": 2,
         "difficulty": 0.8
       }
-    ]
+    ],
+    "playerPosition": {
+      "x": 100,
+      "y": 100
+    }
   },
   {
     "walls": {

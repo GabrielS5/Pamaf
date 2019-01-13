@@ -3,7 +3,8 @@ class LevelPlayer {
 		this.x = x;
 		this.y = y;
 		this.speed = LevelCell / speed;
-		console.log(this.speed);
+		this.width = LevelCell;
+		this.height = LevelCell;
 		this.level = level;
 		this.context = context;
 		this.direction = 0;

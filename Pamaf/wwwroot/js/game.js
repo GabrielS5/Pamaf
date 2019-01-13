@@ -15,7 +15,9 @@ class Game {
 
 	changeMap(map) {
 		this.currentMap = map;
-		this.player = new Player(50, 50, this.context);
+		this.player = new Player(this.context);
+		this.x = -this.player.x + this.gameMap[this.currentMap].playerPosition.x;
+		this.y = -this.player.y + this.gameMap[this.currentMap].playerPosition.y;
 	}
 
 	runLevel(difficulty, levelNumber) {
@@ -162,11 +164,11 @@ class Game {
 
 			if (this.horizontalSpeed >= -1 && this.horizontalSpeed <= 1) {
 				this.horizontalSpeed = 0;
-			} else this.horizontalSpeed -= this.horizontalSpeed / 5;
+			} else this.horizontalSpeed -= this.horizontalSpeed / 3;
 
 			if (this.verticalSpeed >= -1 && this.verticalSpeed <= 1) {
 				this.verticalSpeed = 0;
-			} else this.verticalSpeed -= this.verticalSpeed / 5;
+			} else this.verticalSpeed -= this.verticalSpeed / 3;
 		}
 	}
 

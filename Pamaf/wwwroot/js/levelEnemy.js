@@ -2,6 +2,8 @@ class LevelEnemy {
 	constructor(x, y, speed, level, guiding, player, enemyType, difficulty, context) {
 		this.x = x;
 		this.y = y;
+		this.width = LevelCell;
+		this.height = LevelCell;
 		this.speed = LevelCell / speed;
 		this.level = level;
 		this.guiding = guiding;
@@ -13,7 +15,7 @@ class LevelEnemy {
 		this.enemyType = enemyType;
 		this.line = Math.floor(this.y / LevelCell);
 		this.column = Math.floor(this.x / LevelCell);
-		this.goSleep(60 * this.enemyType);
+		this.goSleep(120 * this.enemyType);
 		this.cycleLimit = Math.floor(GameCycle * difficulty);
 		this.cycleCount = 0;
 		this.enemyCorner = getCorner(this.enemyType);

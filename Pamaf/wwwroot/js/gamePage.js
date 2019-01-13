@@ -14,7 +14,7 @@ function gameRunner(game) {
 	}
 	setTimeout(function() {
 		gameRunner(game);
-	}, 33);
+	}, 16);
 }
 
 gameRunner(game);
