@@ -1,9 +1,9 @@
 class Player {
-	constructor(width, height, context) {
-		this.x = WindowWidth / 2 - width / 2;
-		this.y = WindowHeight / 2 - height / 2;
-		this.width = width;
-		this.height = height;
+	constructor(context) {
+		this.x = WindowWidth / 2 - PlayerSize / 2;
+		this.y = WindowHeight / 2 - PlayerSize / 2;
+		this.width = PlayerSize;
+		this.height = PlayerSize;
 		this.context = context;
 		this.hearts = 3;
 		this.score = 0;
