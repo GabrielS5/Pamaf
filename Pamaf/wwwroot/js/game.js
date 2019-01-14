@@ -32,11 +32,12 @@ class Game {
 			completeLevel(this.gameSession.id, this.gameSession.score, result.levelNumber);
 		} else {
 			finishSession(this.gameSession.id, this.gameSession.score);
+			this.getGameSession();
 		}
 	}
 
 	async init() {
-		await this.getGameSession();
+		this.getGameSession();
 
 		await this.loadMap(this);
 
@@ -190,7 +191,7 @@ class Game {
 		}
 	}
 
-	async getGameSession() {
+	getGameSession() {
 		this.gameSession =  getLastSession(window.localStorage.getItem("userId"), window.localStorage.getItem("year"));
 	}
 
