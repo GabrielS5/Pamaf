@@ -11,6 +11,7 @@ class Game {
 		this.y = 0;
 		this.horizontalSpeed = 0;
 		this.verticalSpeed = 0;
+		this.gameSession = null;
 	}
 
 	changeMap(map) {
@@ -28,13 +29,15 @@ class Game {
 	endLevel(result) {
 		this.levelRunning = false;
 		if (result.success) {
-			console.log(result);
+			completeLevel(this.gameSession.id, this.gameSession.score, result.levelNumber);
 		} else {
-			console.log('salam');
+			finishSession(this.gameSession.id, this.gameSession.score);
 		}
 	}
 
 	async init() {
+		await this.getGameSession();
+
 		await this.loadMap(this);
 
 		await this.loadTextures();
@@ -86,7 +89,7 @@ class Game {
 
 		for (let i = 0; i < 3; i++) {
 			this.context.drawImage(
-				this.textures[this.player.hearts > i ? 0 : 1],
+				this.textures[this.gameSession.hearts > i ? 0 : 1],
 				25 + (25 + bottomMenuInfoSize) * i,
 				bottomMenuStart + WindowHeight,
 				bottomMenuInfoSize,
@@ -97,7 +100,7 @@ class Game {
 		this.context.fillStyle = 'yellow';
 		this.context.font = bottomMenuInfoSize + 'px ArcadeRegular';
 
-		let scoreString = this.player.score.toString();
+		let scoreString = this.gameSession.score.toString();
 
 		while (scoreString.length < 6) scoreString = '0' + scoreString;
 
@@ -106,6 +109,11 @@ class Game {
 			WindowWidth - 7 * bottomMenuInfoSize,
 			WindowHeight + BottomMenuHeight - bottomMenuStart - bottomMenuInfoSize / 3
 		);
+	}
+
+	loseHeart() {
+		loseHeart(this.gameSession.id);
+		this.gameSession.hearts--;
 	}
 
 	update() {
@@ -180,6 +188,10 @@ class Game {
 		if (xobj.status == '200') {
 			game.gameMap = JSON.parse(xobj.responseText);
 		}
+	}
+
+	async getGameSession() {
+		this.gameSession =  getLastSession(window.localStorage.getItem("userId"), window.localStorage.getItem("year"));
 	}
 
 	input(key) {

@@ -1,5 +1,5 @@
 var canvas = document.getElementById('game');
-
+console.log(window.localStorage);
 var context = canvas.getContext('2d');
 
 var levelGenerator = new LevelGenerator();
