@@ -68,3 +68,17 @@ C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInf
 C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorTargetAssemblyInfo.cache
 C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.dll
 C:\Users\gabri\Desktop\Git\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.pdb
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.deps.json
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.runtimeconfig.json
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.runtimeconfig.dev.json
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.dll
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\bin\Debug\netcoreapp2.1\Pamaf.pdb
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.csprojAssemblyReference.cache
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.csproj.CoreCompileInputs.cache
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorAssemblyInfo.cache
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorAssemblyInfo.cs
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInfoInputs.cache
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.AssemblyInfo.cs
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.RazorTargetAssemblyInfo.cache
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.dll
+C:\Users\Adriana\Desktop\Proiect\Pamaf\Pamaf\obj\Debug\netcoreapp2.1\Pamaf.pdb
