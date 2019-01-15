@@ -40,5 +40,14 @@ namespace Pamaf.Repositories.Implementations
             return await appDbContext.Set<User>()
                          .FirstOrDefaultAsync(f => f.Id == id);
         }
+
+        public async Task Update(User user)
+        {
+            var item = await GetById(user.Id);
+
+            item.FacebookName = user.FacebookName;
+
+            await appDbContext.SaveChangesAsync();
+        }
     }
 }

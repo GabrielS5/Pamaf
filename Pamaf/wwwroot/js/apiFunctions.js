@@ -1,21 +1,32 @@
 var ApiLink = 'http://localhost:20000/api';
 
-function login(id) {
+function login(id, name) {
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', ApiLink + '/users/' + id, true);
+	xhr.open('GET', ApiLink + '/users/' + id + '/' + name, true);
 	xhr.onload = function(e) {
 		if (xhr.readyState === 4 && xhr.status === 200) {
+			var response = JSON.parse(xhr.responseText);
 			window.localStorage.setItem('userId', id);
+			window.localStorage.setItem('userName', response.facebookName);
+			window.localStorage.setItem('isAuthenticated', 'true');
 			getLastYear(id);
 			window.location.replace('../html/home.html');
 		} else {
 			console.error(xhr.statusText);
 		}
 	};
-	xhr.onerror = function(e) {
-		console.error(xhr.statusText);
-	};
 	xhr.send(null);
+}
+
+function guestLogin() {
+	window.localStorage.setItem('userName', 'Guest');
+	window.localStorage.setItem('isAuthenticated', 'false');
+	window.location.replace('../html/home.html');
+}
+
+function logout() {
+	window.localStorage.removeItem('userId');
+	window.localStorage.setItem('isAuthenticated', false);
 }
 
 function getLastYear(id) {
@@ -27,9 +38,6 @@ function getLastYear(id) {
 		} else {
 			console.error(xhr.statusText);
 		}
-	};
-	xhr.onerror = function(e) {
-		console.error(xhr.statusText);
 	};
 	xhr.send(null);
 }
@@ -44,21 +52,21 @@ function getLastSession(id, year) {
 	}
 }
 
+function getAllSessions() {
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', ApiLink + '/gamesessions', true);
+	return xhr;
+}
+
 function loseHeart(id) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', ApiLink + '/gamesessions/loseheart/' + id, true);
-	xhr.onerror = function(e) {
-		console.error(xhr.statusText);
-	};
 	xhr.send(null);
 }
 
 function finishSession(id, score) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', ApiLink + '/gamesessions/finish/' + id + '/' + score, true);
-	xhr.onerror = function(e) {
-		console.error(xhr.statusText);
-	};
 	xhr.send(null);
 }
 
@@ -69,8 +77,18 @@ function completeLevel(id, score, levelNumber) {
 		ApiLink + '/gamesessions/addLevel/' + id + '/' + score + '/' + levelNumber,
 		true
 	);
-	xhr.onerror = function(e) {
-		console.error(xhr.statusText);
+	xhr.send(null);
+}
+
+function changeName(id, name) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', ApiLink + '/users/changeName/' + id + '/' + name, true);
+	xhr.onload = function(e) {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			window.localStorage.setItem('userName', name);
+		} else {
+			console.error(xhr.statusText);
+		}
 	};
 	xhr.send(null);
 }

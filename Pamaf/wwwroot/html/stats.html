@@ -1,119 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Pamaf</title>
+		<link rel="stylesheet" href="../css/general.css" />
+		<link rel="stylesheet" href="../css/menu.css" />
+		<link rel="stylesheet" href="../css/stats.css" />
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Pamaf</title>
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/stats.css">
+	<body>
+		<div>
+			<img id="avatar" class="avatar" src="../img/girl.bmp" alt="Avatar" />
+			<div id="avatar-menu" class="avatar-menu hidden">
+				<nav>
+					<div id="profile" class="avatar-menu-child">Profile</div>
+					<div id="stats" class="avatar-menu-child">Stats</div>
+					<div id="logout" class="avatar-menu-child last">Log Out</div>
+					<div id="login" class="avatar-menu-child last">Log In</div>
+				</nav>
+			</div>
+		</div>
+		<nav>
+			<div class="menu-container">
+				<ul class="menu">
+					<li class="logo-item"><img class="logo" src="../img/logo.bmp" alt="pamaf-logo" /></li>
+					<li class="menu-item"><a href="../html/home.html">Home</a></li>
+					<li class="menu-item"><a href="../html/game.html">Play</a></li>
+					<li class="menu-item"><a href="../html/howto.html">How to play</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="content-child">
+				<div class="description">
+					<div class="item">
+						<div class="announcer">Friends who played Pamaf</div>
+						<div class="friend">
+							<span class="friend-name">Gabi</span> <span class="friend-score">2500</span>
+						</div>
+						<div class="friend">
+							<span class="friend-name">Adi</span> <span class="friend-score">300</span>
+						</div>
+						<div class="friend">
+							<span class="friend-name">Ioana</span> <span class="friend-score">2300</span>
+						</div>
+						<div class="friend">
+							<span class="friend-name">Victor</span> <span class="friend-score">-200</span>
+						</div>
+						<div class="friend">
+							<span class="friend-name">Puscasu</span> <span class="friend-score">1200</span>
+						</div>
+						<div class="friend">
+							<span class="friend-name">Larisa</span> <span class="friend-score">500</span>
+						</div>
+						<div class="friend">
+							<span class="friend-name">Colega apartament</span>
+							<span class="friend-score">1300</span>
+						</div>
+					</div>
+					<div class="item">
+						<div class="announcer">Your statistics</div>
+						<div class="statistic">
+							<span class="statistic-name">Number of games</span>
+							<span id="numberOfGames" class="statistic-value">12</span>
+						</div>
+						<div class="statistic">
+							<span class="statistic-name">Games won</span> <span id="gamesWon" class="statistic-value">4</span>
+						</div>
+						<div class="statistic">
+							<span class="statistic-name">HighScore</span>
+							<span id="highScore" class="statistic-value">2300</span>
+						</div>
+						<div class="statistic">
+							<span class="statistic-name">Average Score</span>
+							<span id="averageScore" class="statistic-value">700</span>
+						</div>
+						<div class="statistic">
+							<span class="statistic-name">Leaderboard</span> <span id="leaderboardPlace" class="statistic-value">5</span>
+						</div>
+						<div class="statistic">
+							<span id="friendsNumber" class="statistic-name">No. friends</span> <span class="statistic-value">3</span>
+						</div>
+						<div class="statistic">
+							<span class="statistic-name">Started playing</span>
+							<span id="startedPlaying" class="statistic-value">10/24/18</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/apiFunctions.js"></script>
     <script src="../js/avatar.js"></script>
-</head>
-
-<body>
-    <div>
-        <img id="avatar" class="avatar" src="../img/girl.bmp" alt="Avatar">
-        <div id="avatar-menu" class="avatar-menu hidden">
-            <nav>
-                <div id="profile" class="avatar-menu-child">
-                    Profile
-                </div>
-                <div id="stats" class="avatar-menu-child">
-                    Stats
-                </div>
-                <div id="logout" class="avatar-menu-child last">
-                    Log Out
-                </div>
-            </nav>
-        </div>
-    </div>
-    <nav>
-        <div class="menu-container">
-            <ul class="menu">
-                <li class="logo-item">
-                    <img class="logo" src="../img/logo.bmp" alt="pamaf-logo">
-                </li>
-                <li class="menu-item">
-                    <a href="../html/home.html">Home</a>
-                </li>
-                <li class="menu-item">
-                    <a href="../html/game.html">Play</a>
-                </li>
-                <li class="menu-item">
-                    <a href="../html/howto.html">How to play</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="content">
-        <div class="content-child">
-            <div class="description">
-                <div class="item">
-                    <div class="announcer">Friends who played Pamaf</div>
-                    <div class="friend">
-                        <span class="friend-name">Gabi</span>
-                        <span class="friend-score">2500</span>
-                    </div>
-                    <div class="friend">
-                        <span class="friend-name">Adi</span>
-                        <span class="friend-score">300</span>
-                    </div>
-                    <div class="friend">
-                        <span class="friend-name">Ioana</span>
-                        <span class="friend-score">2300</span>
-                    </div>
-                    <div class="friend">
-                        <span class="friend-name">Victor</span>
-                        <span class="friend-score">-200</span>
-                    </div>
-                    <div class="friend">
-                        <span class="friend-name">Puscasu</span>
-                        <span class="friend-score">1200</span>
-                    </div>
-                    <div class="friend">
-                        <span class="friend-name">Larisa</span>
-                        <span class="friend-score">500</span>
-                    </div>
-                    <div class="friend">
-                        <span class="friend-name">Colega apartament</span>
-                        <span class="friend-score">1300</span>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="announcer">Your statistics</div>
-                    <div class="statistic">
-                        <span class="statistic-name">Number of games</span>
-                        <span class="statistic-value">12</span>
-                    </div>
-                    <div class="statistic">
-                        <span class="statistic-name">Games won</span>
-                        <span class="statistic-value">4</span>
-                    </div>
-                    <div class="statistic">
-                        <span class="statistic-name">Highscore</span>
-                        <span class="statistic-value">2300</span>
-                    </div>
-                    <div class="statistic">
-                        <span class="statistic-name">Average Score</span>
-                        <span class="statistic-value">700</span>
-                    </div>
-                    <div class="statistic">
-                        <span class="statistic-name">Leaderboard</span>
-                        <span class="statistic-value">5</span>
-                    </div>
-                    <div class="statistic">
-                        <span class="statistic-name">No. friends</span>
-                        <span class="statistic-value">3</span>
-                    </div>
-                    <div class="statistic">
-                        <span class="statistic-name">Started playing</span>
-                        <span class="statistic-value">10/24/18</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</body>
-
+    <script src="../js/statsPage.js"></script>
 </html>
