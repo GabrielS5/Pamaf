@@ -18,20 +18,34 @@ namespace Pamaf.Controllers
             this.gameSessionsRepository = gameSessionsRepository;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Login(string id)
+        [HttpGet("{id}/{name}")]
+        public async Task<IActionResult> Login(string id, string name)
         {
             var user = await usersRepository.GetByFacebookId(id);
             if (user == null)
             {
-                await usersRepository.Create(new User
+                user = new User
                 {
-                    FacebookId = id
-                });
+                    FacebookId = id,
+                    FacebookName = name
+                };
 
-                return Ok("Created");
+                await usersRepository.Create(user);
+
+                return Ok(user);
             }
-            return Ok("Logged In");
+            return Ok(user);
+        }
+
+        [HttpGet("changeName/{id}/{name}")]
+        public async Task<IActionResult> ChangeName(string id, string name)
+        {
+            var user = await usersRepository.GetByFacebookId(id);
+            user.FacebookName = name;
+
+            await usersRepository.Update(user);
+
+            return Ok();
         }
 
         [HttpGet("{id}/year")]

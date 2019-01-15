@@ -1,28 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Pamaf</title>
+		<link rel="stylesheet" href="../css/login.css" />
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Pamaf</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <script src="../js/login.js"></script>
-</head>
+	<body>
+		<div class="content">
+			<div class="login-wrapper">
+				<div class="login-window">
+					<div class="announcer">
+						Login with <img src="../img/facebook.png" class="facebook-image" alt="facebook-logo" />
+					</div>
+					<input type="text" placeholder="Username" id="username" />
+					<input type="password" placeholder="password" id="password" />
+					<input type="submit" id="login" value="Log in" />
 
-<body>
-    <div class="content">
-        <div class="login-wrapper">
-            <div class="login-window">
-                <div class="announcer">Login with
-                    <img src="../img/facebook.png" class="facebook-image" alt="facebook-logo">
-                </div>
-                <input type="text" placeholder="Username" id="username">
-                <input type="password" placeholder="password" id="password">
-                <input type="submit" id="login" value="Log in">
-
-                <a href="../html/home.html" class="guest">Enter as a guest?</a>
-            </div>
-        </div>
-    </div>
-</body>
-
+					<a id="guestLogin" class="guest">Enter as a guest?</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/apiFunctions.js"></script>
+	<script src="../js/login.js"></script>
 </html>

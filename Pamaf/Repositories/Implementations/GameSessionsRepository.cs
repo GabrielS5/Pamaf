@@ -52,7 +52,7 @@ namespace Pamaf.Repositories.Implementations
         {
             var item = await GetById(gameSession.Id);
 
-            item.Date = new DateTime();
+            item.Date = DateTime.Now;
             item.Finished = gameSession.Finished;
             item.Hearts = gameSession.Hearts;
             item.Score = gameSession.Score;

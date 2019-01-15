@@ -1,78 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Pamaf</title>
+		<link rel="stylesheet" href="../css/general.css" />
+		<link rel="stylesheet" href="../css/menu.css" />
+		<link rel="stylesheet" href="../css/home.css" />
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Pamaf</title>
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/home.css">
-    <script src="../js/avatar.js"></script>
-</head>
-
-<body>
-    <div>
-        <img id="avatar" class="avatar" src="../img/girl.bmp" alt="Avatar">
-        <div id="avatar-menu" class="avatar-menu hidden">
-            <nav>
-                <div id="profile" class="avatar-menu-child">
-                    Profile
-                </div>
-                <div id="stats" class="avatar-menu-child">
-                    Stats
-                </div>
-                <div id="logout" class="avatar-menu-child last">
-                    Log Out
-                </div>
-            </nav>
-        </div>
-    </div>
-    <nav>
-        <div class="menu-container">
-            <ul class="menu">
-                <li class="logo-item">
-                    <img class="logo" src="../img/logo.bmp" alt="pamaf-logo">
-                </li>
-                <li class="menu-item">
-                    <a href="../html/home.html">Home</a>
-                </li>
-                <li class="menu-item">
-                    <a href="../html/game.html">Play</a>
-                </li>
-                <li class="menu-item">
-                    <a href="../html/howto.html">How to play</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="content" itemscope itemtype="http://schema.org/Game">
-        <div class="content-child">
-            <div class="title">
-                <p>W</p>
-                <p>E</p>
-                <p>L</p>
-                <p>C</p>
-                <p>O</p>
-                <p>M</p>
-                <p>E</p>
-            </div>
-            <div class="description" itemprop="description">
-                <p class="item">
-                    In 1980, Namco created a character that was small, round and yellow. It's mouth consisted of a piece cut out of the main
-                    circle, like a slice of cake. Pac-Man was born. It was a huge hit in the arcades across the globe, and
-                    Pac-Man is still going strong today. With every new generation of game systems, Pac-Man continues to
-                    be part of the gaming community.
-                </p>
-                <p class="item">
-                    We present you our version of Pac-Man, <span itemprop="name">Pamaf</span>, which is an improved version of the game, representing a unique experience for FII
-                    students and not only. We, <span itemprop="contributor">Adriana</span> and <span itemprop="contributor">Gabriel</span>, did our best to recreate the horrors of the college life,
-                    featuring the map of our beloved faculty, with its halls haunted by the teachers, just like in real life.
-                    We invite you to play this game and compete with your friends and colleagues.
-                </p>
-            </div>
-        </div>
-    </div>
-
-</body>
-
+	<body>
+		<div>
+			<img id="avatar" class="avatar" src="../img/girl.bmp" alt="Avatar" />
+			<div id="avatar-menu" class="avatar-menu hidden">
+				<nav>
+					<div id="profile" class="avatar-menu-child">Profile</div>
+					<div id="stats" class="avatar-menu-child">Stats</div>
+					<div id="logout" class="avatar-menu-child last">Log Out</div>
+					<div id="login" class="avatar-menu-child last">Log In</div>
+				</nav>
+			</div>
+		</div>
+		<nav>
+			<div class="menu-container">
+				<ul class="menu">
+					<li class="logo-item"><img class="logo" src="../img/logo.bmp" alt="pamaf-logo" /></li>
+					<li class="menu-item"><a href="../html/home.html">Home</a></li>
+					<li class="menu-item"><a href="../html/game.html">Play</a></li>
+					<li class="menu-item"><a href="../html/howto.html">How to play</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="content" itemscope itemtype="http://schema.org/Game">
+			<div class="content-child">
+				<div class="title">
+					<p>W</p>
+					<p>E</p>
+					<p>L</p>
+					<p>C</p>
+					<p>O</p>
+					<p>M</p>
+					<p>E</p>
+				</div>
+				<div class="description" itemprop="description">
+					<p class="item">
+						In 1980, Namco created a character that was small, round and yellow. It's mouth
+						consisted of a piece cut out of the main circle, like a slice of cake. Pac-Man was born.
+						It was a huge hit in the arcades across the globe, and Pac-Man is still going strong
+						today. With every new generation of game systems, Pac-Man continues to be part of the
+						gaming community.
+					</p>
+					<p class="item">
+						We present you our version of Pac-Man, <span itemprop="name">Pamaf</span>, which is an
+						improved version of the game, representing a unique experience for FII students and not
+						only. We, <span itemprop="contributor">Adriana</span> and
+						<span itemprop="contributor">Gabriel</span>, did our best to recreate the horrors of the
+						college life, featuring the map of our beloved faculty, with its halls haunted by the
+						teachers, just like in real life. We invite you to play this game and compete with your
+						friends and colleagues.
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/apiFunctions.js"></script>
+	<script src="../js/avatar.js"></script>
 </html>

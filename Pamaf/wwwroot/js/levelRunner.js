@@ -55,15 +55,14 @@ class LevelRunner {
 	checkEndGame() {
 		if (this.player.hearts < 0) {
 			this.game.endLevel({
-				success: true,
-				score: this.player.score
+				success: false,
+				levelNumber: this.levelNumber
 			});
 		} else {
 			if (this.coinMap.filter(f => f.some(s => s != 0)).length == 0) {
 				this.game.endLevel({
 					success: true,
-					hearts: this.player.hearts,
-					score: this.player.score
+					levelNumber: this.levelNumber
 				});
 			}
 		}
@@ -91,6 +90,7 @@ class LevelRunner {
 				this.enemies[collision].goSleep(Math.floor(200 - 100 * this.difficulty));
 				this.player.score += 200;
 			} else {
+				this.game.loseHeart();
 				this.player.hearts--;
 				this.resetLevel();
 			}
@@ -102,8 +102,7 @@ class LevelRunner {
 			enemy.update();
 		});
 
-		this.game.player.hearts = this.player.hearts;
-		this.game.player.score = this.player.score;
+		this.game.gameSession.score = this.player.score;
 
 		this.checkEndGame();
 	}

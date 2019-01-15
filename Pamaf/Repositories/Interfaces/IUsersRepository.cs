@@ -14,5 +14,7 @@ namespace Pamaf.Repositories.Interfaces
         Task<User> GetByFacebookId(string facebookId);
 
         Task Create(User user);
+
+        Task Update(User user);
     }
 }

@@ -36,6 +36,7 @@ namespace Pamaf.Controllers
             var latestSession = gameSessions.Where(w => w.Year == year && !w.Finished).OrderBy(o => o.Date).FirstOrDefault();
             if (latestSession != null)
             {
+                await gameSessionsRepository.Update(latestSession);
                 latestSession.Levels.ForEach(f => f.GameSession = null);
 
                 return Ok(latestSession);
@@ -46,7 +47,7 @@ namespace Pamaf.Controllers
                 latestSession = new GameSession
                 {
                     User = user,
-                    Date = new DateTime(),
+                    Date = DateTime.Now,
                     Year = year,
                     Finished = false,
                     Hearts = 3,

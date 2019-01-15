@@ -5,8 +5,6 @@ class Player {
 		this.width = PlayerSize;
 		this.height = PlayerSize;
 		this.context = context;
-		this.hearts = 3;
-		this.score = 0;
 	}
 
 	draw() {
