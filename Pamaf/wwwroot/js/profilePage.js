@@ -1,7 +1,7 @@
 window.onload = function() {
     document.getElementById('username').value = window.localStorage.getItem('userName');
 
-    if (!window.localStorage.getItem('year')) getLastYear(id);
+    if (!window.localStorage.getItem('year')) getLastYear(window.localStorage.getItem('userId'));
     
     document.getElementById('year').value = window.localStorage.getItem('year');
     

@@ -65,10 +65,10 @@ input[type='submit'] {
 
 .game-area {
 	width: 70%;
-	height: 80%;
+	height: 90%;
 	display: inline-block;
 	margin-right: 2%;
-	margin-top: 10vh;
+	margin-top: 5vh;
 	min-height: 400px;
 	min-width: 600px;
 }

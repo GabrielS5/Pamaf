@@ -1,122 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Pamaf</title>
+		<link rel="stylesheet" href="../css/general.css" />
+		<link rel="stylesheet" href="../css/menu.css" />
+		<link rel="stylesheet" href="../css/game.css" />
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <title>Pamaf</title>
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/game.css">
-</head>
-
-<body>
-    <div>
-        <img id="avatar" class="avatar" src="../img/boy.bmp" alt="Avatar">
-        <div id="avatar-menu" class="avatar-menu hidden">
-            <nav>
-                <div id="profile" class="avatar-menu-child">
-                    Profile
-                </div>
-                <div id="stats" class="avatar-menu-child">
-                    Stats
-                </div>
-                <div id="logout" class="avatar-menu-child last">
-                    Log Out
-                </div>
-                <div id="login" class="avatar-menu-child last">
-                    Log In
-                </div>
-            </nav>
-        </div>
-    </div>
-    <nav>
-        <div class="menu-container">
-            <ul class="menu">
-                <li class="logo-item">
-                    <img class="logo" src="../img/logo.bmp" alt="pamaf-logo">
-                </li>
-                <li class="menu-item">
-                    <a href="../html/home.html">Home</a>
-                </li>
-                <li class="menu-item">
-                    <a href="../html/game.html">Play</a>
-                </li>
-                <li class="menu-item">
-                    <a href="../html/howto.html">How to play</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="content" itemscope itemtype="http://schema.org/Game">
-        <div class="leaderboard-area">
-            <div class="leaderboard">
-                <div class="year-selection">
-                    <input type="submit" id="year1" value="Year 1">
-                    <input type="submit" id="year2" value="Year 2">
-                    <input type="submit" id="year3" value="Year 3">
-                </div>
-                <div class="announcer">
-                    Leaderboard
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">1. Adriana</span>
-                    <span class="leaderboard-item-value">2600</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">2. Gabi</span>
-                    <span class="leaderboard-item-value">2600</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">3. Cineva</span>
-                    <span class="leaderboard-item-value">2000</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">4. Altcineva</span>
-                    <span class="leaderboard-item-value">1800</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">5. Ioana</span>
-                    <span class="leaderboard-item-value">1600</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">6. Adi</span>
-                    <span class="leaderboard-item-value">1200</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">7. Larisa</span>
-                    <span class="leaderboard-item-value">1100</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">8. Denisa</span>
-                    <span class="leaderboard-item-value">1030</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">9. Galan</span>
-                    <span class="leaderboard-item-value">900</span>
-                </div>
-                <div class="leaderboard-item">
-                    <span class="leaderboard-item-name">10. Messi</span>
-                    <span class="leaderboard-item-value">800</span>
-                </div>
-            </div>
-        </div>
-        <div class="game-area">
-            <div class="game">
-                <canvas class="game-canvas" id="game" width="900" height="1100"></canvas>
-            </div>
-        </div>
-    </div>
-    <script src="../js/apiFunctions.js"></script>
-    <script src="../js/avatar.js"></script>
-    <script src="../js/globalVariables.js"></script>
-    <script src="../js/helpingFunctions.js"></script>
-    <script src="../js/levelEnemy.js"></script>
-    <script src="../js/levelPlayer.js"></script>
-    <script src="../js/levelGenerator.js"></script>
-    <script src="../js/player.js"></script>
-    <script src="../js/levelRunner.js"></script>
-    <script src="../js/game.js"></script>
-    <script src="../js/gamePage.js"></script>
-</body>
-
+	<body>
+		<div>
+			<img id="avatar" class="avatar" src="../img/boy.bmp" alt="Avatar" />
+			<div id="avatar-menu" class="avatar-menu hidden">
+				<nav>
+					<div id="profile" class="avatar-menu-child">Profile</div>
+					<div id="stats" class="avatar-menu-child">Stats</div>
+					<div id="logout" class="avatar-menu-child last">Log Out</div>
+					<div id="login" class="avatar-menu-child last">Log In</div>
+				</nav>
+			</div>
+		</div>
+		<nav>
+			<div class="menu-container">
+				<ul class="menu">
+					<li class="logo-item"><img class="logo" src="../img/logo.bmp" alt="pamaf-logo" /></li>
+					<li class="menu-item"><a href="../html/home.html">Home</a></li>
+					<li class="menu-item"><a href="../html/game.html">Play</a></li>
+					<li class="menu-item"><a href="../html/howto.html">How to play</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="content" itemscope itemtype="http://schema.org/Game">
+			<div class="leaderboard-area">
+				<div class="leaderboard">
+					<div class="year-selection">
+						<input type="submit" id="year1Button" value="Year 1" />
+						<input type="submit" id="year2Button" value="Year 2" />
+						<input type="submit" id="year3Button" value="Year 3" />
+					</div>
+					<div class="announcer">Leaderboard</div>
+					<div id="leaderboard-items"></div>
+				</div>
+			</div>
+			<div class="game-area">
+				<div class="game">
+					<canvas class="game-canvas" id="game" width="900" height="1100"></canvas>
+				</div>
+			</div>
+		</div>
+		<script src="../js/apiFunctions.js"></script>
+		<script src="../js/avatar.js"></script>
+		<script src="../js/globalVariables.js"></script>
+		<script src="../js/helpingFunctions.js"></script>
+		<script src="../js/levelEnemy.js"></script>
+		<script src="../js/levelPlayer.js"></script>
+		<script src="../js/levelGenerator.js"></script>
+		<script src="../js/player.js"></script>
+		<script src="../js/levelRunner.js"></script>
+		<script src="../js/game.js"></script>
+		<script src="../js/gamePage.js"></script>
+	</body>
 </html>

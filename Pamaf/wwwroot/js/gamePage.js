@@ -1,5 +1,5 @@
 var canvas = document.getElementById('game');
-console.log(window.localStorage);
+
 var context = canvas.getContext('2d');
 
 var levelGenerator = new LevelGenerator();
@@ -28,4 +28,50 @@ function onKeyDown(e) {
 
 function onKeyUp(e) {
 	game.input(-e.keyCode);
+}
+
+window.onload = function() {
+	createLeaderboard(1);
+
+	document.getElementById('year1Button').addEventListener('click', function(e) {
+		createLeaderboard(1);
+	});
+	document.getElementById('year2Button').addEventListener('click', function(e) {
+		createLeaderboard(2);
+	});
+	document.getElementById('year3Button').addEventListener('click', function(e) {
+		createLeaderboard(3);
+	});
+};
+
+function createLeaderboard(year) {
+	let request = getAllSessions();
+
+	request.onload = function(e) {
+		let sessions = JSON.parse(request.responseText);
+
+		sessions = sessions.filter(f => f.year == year).sort((s1, s2) => s2.score - s1.score);
+
+		var items = document.getElementById('leaderboard-items');
+
+		items.innerHTML = '';
+
+		for (let i = 0; i < 10 && i < sessions.length; i++) {
+			var item = document.createElement('DIV');
+			item.classList.add('leaderboard-item');
+
+			var itemName = document.createElement('SPAN');
+			itemName.classList.add('leaderboard-item-name');
+			itemName.innerHTML = i + 1 + '. ' + sessions[i].user.facebookName;
+
+			var itemValue = document.createElement('SPAN');
+			itemValue.classList.add('leaderboard-item-value');
+			itemValue.innerHTML = sessions[i].score;
+
+			item.appendChild(itemName);
+			item.appendChild(itemValue);
+			items.appendChild(item);
+		}
+	};
+	request.send(null);
 }
