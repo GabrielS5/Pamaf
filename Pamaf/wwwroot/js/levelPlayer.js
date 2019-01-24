@@ -1,5 +1,5 @@
 class LevelPlayer {
-	constructor(x, y, speed, level, hearts, score, context) {
+	constructor(x, y, speed, level, context) {
 		this.x = x;
 		this.y = y;
 		this.speed = LevelCell / speed;
@@ -12,8 +12,6 @@ class LevelPlayer {
 		this.size = LevelCell;
 		this.line = Math.floor(this.y / LevelCell);
 		this.column = Math.floor(this.x / LevelCell);
-		this.hearts = hearts;
-		this.score = score;
 	}
 
 	input(key) {

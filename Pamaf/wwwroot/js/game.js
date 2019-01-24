@@ -30,9 +30,11 @@ class Game {
 		this.levelRunning = false;
 		if (result.success) {
 			completeLevel(this.gameSession.id, this.gameSession.score, result.levelNumber);
+			this.gameSession.levels.push({ levelNumber: result.levelNumber });
 		} else {
 			finishSession(this.gameSession.id, this.gameSession.score);
 			this.getGameSession();
+			this.changeMap(this.computeCurrentMap(this.gameSession.levels));
 		}
 	}
 
@@ -47,69 +49,89 @@ class Game {
 
 		await this.levelGenerator.init();
 
-		this.changeMap(0);
+		this.changeMap(this.computeCurrentMap(this.gameSession.levels));
 
 		this.isReady = true;
 	}
 
 	draw() {
-		this.canvas.getContext('2d').clearRect(0, 0, this.canvas.width, this.canvas.height);
-		this.context.fillStyle = 'white';
-		this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-		if (this.levelRunning) {
-			this.levelRunner.draw();
+		if (this.gamePaused) {
+			this.context.fillStyle = 'yellow';
+			this.context.font = 75 + 'px ArcadeRegular';
+			this.context.lineWidth = 3;
+			this.context.strokeStyle = 'black';
+			this.context.fillText('PAUSED', WindowWidth / 2 - 125, WindowHeight / 2);
+			this.context.strokeText('PAUSED', WindowWidth / 2 - 125, WindowHeight / 2);
 		} else {
-			this.gameMap[this.currentMap].walls.forEach(element => {
-				this.context.fillStyle = 'brown';
+			this.canvas.getContext('2d').clearRect(0, 0, this.canvas.width, this.canvas.height);
+			this.context.fillStyle = 'white';
+			this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+			if (this.levelRunning) {
+				this.levelRunner.draw();
+			} else {
+				this.gameMap[this.currentMap].walls.forEach(element => {
+					this.context.fillStyle = 'brown';
+					this.context.fillRect(
+						element.x - this.x,
+						element.y - this.y,
+						element.width,
+						element.height
+					);
+				});
+
+				this.context.fillStyle = 'blue';
 				this.context.fillRect(
-					element.x - this.x,
-					element.y - this.y,
-					element.width,
-					element.height
+					this.gameMap[this.currentMap].exitZone.x - this.x,
+					this.gameMap[this.currentMap].exitZone.y - this.y,
+					this.gameMap[this.currentMap].exitZone.width,
+					this.gameMap[this.currentMap].exitZone.height
 				);
-			});
 
-			this.gameMap[this.currentMap].levels.forEach(element => {
-				this.context.fillStyle = 'yellow';
-				this.context.fillRect(
-					element.x - this.x,
-					element.y - this.y,
-					element.width,
-					element.height
+				this.gameMap[this.currentMap].levels.forEach(element => {
+					if (levelIsComplete(element, this.gameSession.levels)) this.context.fillStyle = 'green';
+					else this.context.fillStyle = 'yellow';
+
+					this.context.fillRect(
+						element.x - this.x,
+						element.y - this.y,
+						element.width,
+						element.height
+					);
+				});
+
+				this.player.draw();
+			}
+
+			this.context.fillStyle = 'rgb(10,80,150)';
+			this.context.fillRect(0, WindowHeight, this.canvas.width, BottomMenuHeight);
+
+			let bottomMenuStart = BottomMenuHeight / 4;
+			let bottomMenuInfoSize = BottomMenuHeight / 2;
+
+			for (let i = 0; i < 3; i++) {
+				this.context.drawImage(
+					this.textures[this.gameSession.hearts > i ? 0 : 1],
+					25 + (25 + bottomMenuInfoSize) * i,
+					bottomMenuStart + WindowHeight,
+					bottomMenuInfoSize,
+					bottomMenuInfoSize
 				);
-			});
+			}
 
-			this.player.draw();
-		}
-		this.context.fillStyle = 'rgb(10,80,150)';
-		this.context.fillRect(0, WindowHeight, this.canvas.width, BottomMenuHeight);
+			this.context.fillStyle = 'yellow';
+			this.context.font = bottomMenuInfoSize + 'px ArcadeRegular';
 
-		let bottomMenuStart = BottomMenuHeight / 4;
-		let bottomMenuInfoSize = BottomMenuHeight / 2;
+			let scoreString = this.gameSession.score.toString();
 
-		for (let i = 0; i < 3; i++) {
-			this.context.drawImage(
-				this.textures[this.gameSession.hearts > i ? 0 : 1],
-				25 + (25 + bottomMenuInfoSize) * i,
-				bottomMenuStart + WindowHeight,
-				bottomMenuInfoSize,
-				bottomMenuInfoSize
+			while (scoreString.length < 6) scoreString = '0' + scoreString;
+
+			this.context.fillText(
+				'SCORE: ' + scoreString,
+				WindowWidth - 7 * bottomMenuInfoSize,
+				WindowHeight + BottomMenuHeight - bottomMenuStart - bottomMenuInfoSize / 3
 			);
 		}
-
-		this.context.fillStyle = 'yellow';
-		this.context.font = bottomMenuInfoSize + 'px ArcadeRegular';
-
-		let scoreString = this.gameSession.score.toString();
-
-		while (scoreString.length < 6) scoreString = '0' + scoreString;
-
-		this.context.fillText(
-			'SCORE: ' + scoreString,
-			WindowWidth - 7 * bottomMenuInfoSize,
-			WindowHeight + BottomMenuHeight - bottomMenuStart - bottomMenuInfoSize / 3
-		);
 	}
 
 	loseHeart() {
@@ -118,66 +140,68 @@ class Game {
 	}
 
 	update() {
-		if (this.levelRunning) {
-			this.levelRunner.update();
-		} else {
-			if (this.movingRight) {
-				this.horizontalSpeed = 10;
-			}
-			if (this.movingLeft) {
-				this.horizontalSpeed = -10;
-			}
-			if (this.movingUp) {
-				this.verticalSpeed = -10;
-			}
-			if (this.movingDown) {
-				this.verticalSpeed = 10;
-			}
+		if (!this.gamePaused) {
+			if (this.levelRunning) {
+				this.levelRunner.update();
+			} else {
+				if (this.movingRight) {
+					this.horizontalSpeed = 10;
+				}
+				if (this.movingLeft) {
+					this.horizontalSpeed = -10;
+				}
+				if (this.movingUp) {
+					this.verticalSpeed = -10;
+				}
+				if (this.movingDown) {
+					this.verticalSpeed = 10;
+				}
 
-			this.x += this.horizontalSpeed;
-			this.player.updateX(this.x);
-			let horizontalCollision = checkCollision(this.player, this.gameMap[this.currentMap].walls);
-			if (horizontalCollision != -1) {
-				if (this.gameMap[this.currentMap].walls[horizontalCollision].x < this.player.x)
-					this.x +=
-						this.gameMap[this.currentMap].walls[horizontalCollision].x +
-						this.gameMap[this.currentMap].walls[horizontalCollision].width -
-						this.player.x +
-						0.1;
-				else
-					this.x -=
-						this.player.x +
-						this.player.width -
-						this.gameMap[this.currentMap].walls[horizontalCollision].x +
-						0.1;
+				this.x += this.horizontalSpeed;
 				this.player.updateX(this.x);
-			}
-			this.y += this.verticalSpeed;
-			this.player.updateY(this.y);
-			let verticalCollision = checkCollision(this.player, this.gameMap[this.currentMap].walls);
-			if (verticalCollision != -1) {
-				if (this.gameMap[this.currentMap].walls[verticalCollision].y < this.player.y)
-					this.y +=
-						this.gameMap[this.currentMap].walls[verticalCollision].y +
-						this.gameMap[this.currentMap].walls[verticalCollision].height -
-						this.player.y +
-						0.1;
-				else
-					this.y -=
-						this.player.y +
-						this.player.height -
-						this.gameMap[this.currentMap].walls[verticalCollision].y +
-						0.1;
+				let horizontalCollision = checkCollision(this.player, this.gameMap[this.currentMap].walls);
+				if (horizontalCollision != -1) {
+					if (this.gameMap[this.currentMap].walls[horizontalCollision].x < this.player.x)
+						this.x +=
+							this.gameMap[this.currentMap].walls[horizontalCollision].x +
+							this.gameMap[this.currentMap].walls[horizontalCollision].width -
+							this.player.x +
+							0.1;
+					else
+						this.x -=
+							this.player.x +
+							this.player.width -
+							this.gameMap[this.currentMap].walls[horizontalCollision].x +
+							0.1;
+					this.player.updateX(this.x);
+				}
+				this.y += this.verticalSpeed;
 				this.player.updateY(this.y);
+				let verticalCollision = checkCollision(this.player, this.gameMap[this.currentMap].walls);
+				if (verticalCollision != -1) {
+					if (this.gameMap[this.currentMap].walls[verticalCollision].y < this.player.y)
+						this.y +=
+							this.gameMap[this.currentMap].walls[verticalCollision].y +
+							this.gameMap[this.currentMap].walls[verticalCollision].height -
+							this.player.y +
+							0.1;
+					else
+						this.y -=
+							this.player.y +
+							this.player.height -
+							this.gameMap[this.currentMap].walls[verticalCollision].y +
+							0.1;
+					this.player.updateY(this.y);
+				}
+
+				if (this.horizontalSpeed >= -1 && this.horizontalSpeed <= 1) {
+					this.horizontalSpeed = 0;
+				} else this.horizontalSpeed -= this.horizontalSpeed / 3;
+
+				if (this.verticalSpeed >= -1 && this.verticalSpeed <= 1) {
+					this.verticalSpeed = 0;
+				} else this.verticalSpeed -= this.verticalSpeed / 3;
 			}
-
-			if (this.horizontalSpeed >= -1 && this.horizontalSpeed <= 1) {
-				this.horizontalSpeed = 0;
-			} else this.horizontalSpeed -= this.horizontalSpeed / 3;
-
-			if (this.verticalSpeed >= -1 && this.verticalSpeed <= 1) {
-				this.verticalSpeed = 0;
-			} else this.verticalSpeed -= this.verticalSpeed / 3;
 		}
 	}
 
@@ -192,20 +216,35 @@ class Game {
 	}
 
 	getGameSession() {
-		this.gameSession =  getLastSession(window.localStorage.getItem("userId"), window.localStorage.getItem("year"));
+		this.gameSession = getLastSession(
+			window.localStorage.getItem('userId'),
+			window.localStorage.getItem('year')
+		);
 	}
 
 	input(key) {
-		if (this.levelRunning) {
+		if (key == 80) this.gamePaused = !this.gamePaused;
+		else if (this.levelRunning) {
 			this.levelRunner.input(key);
 		} else {
 			if (key == 13) {
 				let level = checkCollision(this.player, this.gameMap[this.currentMap].levels);
-				if (level != -1) {
+				if (
+					level != -1 &&
+					!levelIsComplete(this.gameMap[this.currentMap].levels[level], this.gameSession.levels)
+				) {
 					this.runLevel(
 						this.gameMap[this.currentMap].levels[level].difficulty,
 						this.gameMap[this.currentMap].levels[level].number
 					);
+				} else if (checkCollision(this.player, [this.gameMap[this.currentMap].exitZone]) != -1) {
+					let nextMap = this.computeCurrentMap(this.gameSession.levels);
+					if (this.currentMap != nextMap) {
+						if (nextMap != this.gameMap.length) this.changeMap(nextMap);
+						else {
+							finishSession(this.gameSession.id, this.gameSession.score);
+						}
+					}
 				}
 			} else {
 				this.playerInput(key);
@@ -288,5 +327,15 @@ class Game {
 				this.moveDown(false);
 				break;
 		}
+	}
+
+	computeCurrentMap(levels) {
+		for (let i = 0; i < this.gameMap.length; i++) {
+			for (let j = 0; j < this.gameMap[i].levels.length; j++) {
+				let levelNumber = this.gameMap[i].levels[j].number;
+				if (!levelIsComplete(this.gameMap[i].levels[j], levels)) return i;
+			}
+		}
+		return this.gameMap.length;
 	}
 }

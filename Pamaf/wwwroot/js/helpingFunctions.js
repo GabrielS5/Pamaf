@@ -135,3 +135,9 @@ function checkCollision(player, structures) {
 	}
 	return -1;
 }
+
+function levelIsComplete(level, completedLevels) {
+	return completedLevels.some(function(element) {
+		return element.levelNumber == level.number;
+	});
+}

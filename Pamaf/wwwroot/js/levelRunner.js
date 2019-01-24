@@ -17,7 +17,7 @@ class LevelRunner {
 		this.level = level;
 		let guiding = getGuiding(level);
 		this.coinMap = getCoinMap(level);
-		this.player = new LevelPlayer(30, 30, 7, this.level, 3, 0, this.context);
+		this.player = new LevelPlayer(30, 30, 7, this.level, this.context);
 		this.enemies = [];
 		this.enemies.push(
 			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 1, this.difficulty, this.context)
@@ -53,7 +53,7 @@ class LevelRunner {
 	}
 
 	checkEndGame() {
-		if (this.player.hearts < 0) {
+		if (this.game.gameSession.hearts < 0) {
 			this.game.endLevel({
 				success: false,
 				levelNumber: this.levelNumber
@@ -74,10 +74,10 @@ class LevelRunner {
 
 		// coins collisions
 		if (this.coinMap[pAverageLine][pAverageColumn] == 1) {
-			this.player.score += 10;
+			this.game.gameSession.score += 10;
 			this.coinMap[pAverageLine][pAverageColumn] = 0;
 		} else if (this.coinMap[pAverageLine][pAverageColumn] == 2) {
-			this.player.score += 100;
+			this.game.gameSession.score += 100;
 			this.coinMap[pAverageLine][pAverageColumn] = 0;
 			this.enemies.forEach(enemy => {
 				enemy.goChased(Math.floor(300 - 100 * this.difficulty));
@@ -88,10 +88,9 @@ class LevelRunner {
 		if (collision != -1) {
 			if (this.enemies[collision].mode == 2) {
 				this.enemies[collision].goSleep(Math.floor(200 - 100 * this.difficulty));
-				this.player.score += 200;
+				this.game.gameSession.score += 200;
 			} else {
 				this.game.loseHeart();
-				this.player.hearts--;
 				this.resetLevel();
 			}
 		}
@@ -101,8 +100,6 @@ class LevelRunner {
 		this.enemies.forEach(enemy => {
 			enemy.update();
 		});
-
-		this.game.gameSession.score = this.player.score;
 
 		this.checkEndGame();
 	}
@@ -225,6 +222,12 @@ class LevelRunner {
 	}
 
 	input(key) {
+		if (key == 16) {
+			this.game.endLevel({
+				success: true,
+				levelNumber: this.levelNumber
+			});
+		}
 		this.player.input(key);
 	}
 

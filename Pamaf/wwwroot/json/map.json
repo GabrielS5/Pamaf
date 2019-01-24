@@ -66,7 +66,7 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 1,
+        "number": 2,
         "difficulty": 0.5
       },
       {
@@ -75,7 +75,7 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 2,
+        "number": 3,
         "difficulty": 0.8
       },
       {
@@ -84,7 +84,7 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 2,
+        "number": 4,
         "difficulty": 0.8
       },
       {
@@ -93,13 +93,19 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 2,
+        "number": 5,
         "difficulty": 0.8
       }
     ],
     "playerPosition": {
       "x": 300,
       "y": 800
+    },
+    "exitZone": {
+      "x": 300,
+      "y": 800,
+      "width": 150,
+      "height": 150
     }
   },
   {
@@ -185,7 +191,7 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 2,
+        "number": 6,
         "difficulty": 0.8
       },
       {
@@ -194,13 +200,19 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 2,
+        "number": 7,
         "difficulty": 0.8
       }
     ],
     "playerPosition": {
       "x": 400,
       "y": 900
+    },
+    "exitZone": {
+      "x": 400,
+      "y": 900,
+      "width": 150,
+      "height": 150
     }
 
   },
@@ -281,13 +293,19 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 2,
+        "number": 8,
         "difficulty": 0.8
       }
     ],
     "playerPosition": {
       "x": 400,
       "y": 800
+    },
+    "exitZone": {
+      "x": 400,
+      "y": 800,
+      "width": 150,
+      "height": 150
     }
   }
 ]
