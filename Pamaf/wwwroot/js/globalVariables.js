@@ -4,3 +4,5 @@ var LevelCell = 30;
 var GameCycle = 2000;
 var BottomMenuHeight = 100;
 var PlayerSize = 100;
+var FramesPerSecond = 60;
+var LevelTime = 20;

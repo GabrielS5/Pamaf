@@ -64,6 +64,18 @@ function loseHeart(id) {
 	xhr.send(null);
 }
 
+function addTime(id,time) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', ApiLink + '/gamesessions/addtime/' + id + '/' + time, true);
+	xhr.send(null);
+}
+
+function addBotEaten(id) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', ApiLink + '/gamesessions/addbotseaten/' + id, true);
+	xhr.send(null);
+}
+
 function finishSession(id, score) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', ApiLink + '/gamesessions/finish/' + id + '/' + score, true);

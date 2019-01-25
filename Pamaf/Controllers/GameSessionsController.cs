@@ -51,6 +51,8 @@ namespace Pamaf.Controllers
                     Year = year,
                     Finished = false,
                     Hearts = 3,
+                    Time = 0,
+                    BotsEaten = 0,
                     Score = 0
                 };
                 await gameSessionsRepository.Create(latestSession);
@@ -95,6 +97,30 @@ namespace Pamaf.Controllers
                 LevelNumber = levelNumber,
                 GameSession = gameSession
             });
+
+            await gameSessionsRepository.Update(gameSession);
+
+            return Ok();
+        }
+
+        [HttpPost("addTime/{id}/{time:int}")]
+        public async Task<IActionResult> AddTime(string id, int time)
+        {
+            var gameSession = await gameSessionsRepository.GetById(new Guid(id));
+
+            gameSession.Time += time;
+
+            await gameSessionsRepository.Update(gameSession);
+
+            return Ok();
+        }
+
+        [HttpPost("addBotsEaten/{id}")]
+        public async Task<IActionResult> AddBotsEaten(string id)
+        {
+            var gameSession = await gameSessionsRepository.GetById(new Guid(id));
+
+            gameSession.BotsEaten++;
 
             await gameSessionsRepository.Update(gameSession);
 

@@ -56,6 +56,8 @@ namespace Pamaf.Repositories.Implementations
             item.Finished = gameSession.Finished;
             item.Hearts = gameSession.Hearts;
             item.Score = gameSession.Score;
+            item.BotsEaten = gameSession.BotsEaten;
+            item.Time = gameSession.Time;
 
             await appDbContext.SaveChangesAsync();
         }

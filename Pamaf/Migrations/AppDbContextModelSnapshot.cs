@@ -15,7 +15,7 @@ namespace Pamaf.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -40,6 +40,8 @@ namespace Pamaf.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("BotsEaten");
+
                     b.Property<DateTime>("Date");
 
                     b.Property<bool>("Finished");
@@ -47,6 +49,8 @@ namespace Pamaf.Migrations
                     b.Property<int>("Hearts");
 
                     b.Property<int>("Score");
+
+                    b.Property<int>("Time");
 
                     b.Property<Guid?>("UserId");
 

@@ -12,6 +12,8 @@ class Game {
 		this.horizontalSpeed = 0;
 		this.verticalSpeed = 0;
 		this.gameSession = null;
+		this.endMenuRunning = false;
+		this.endMenuRunner = new EndMenuRunner(this, context);
 	}
 
 	changeMap(map) {
@@ -28,14 +30,25 @@ class Game {
 
 	endLevel(result) {
 		this.levelRunning = false;
+		addTime(this.gameSession.id, result.timeElapsed);
+		this.gameSession.time += result.timeElapsed;
 		if (result.success) {
 			completeLevel(this.gameSession.id, this.gameSession.score, result.levelNumber);
 			this.gameSession.levels.push({ levelNumber: result.levelNumber });
 		} else {
-			finishSession(this.gameSession.id, this.gameSession.score);
-			this.getGameSession();
-			this.changeMap(this.computeCurrentMap(this.gameSession.levels));
+			if (result.timeElapsed == LevelTime) this.loseHeart();
+			if (this.gameSession.hearts < 0) {
+				this.endGame();
+			}
 		}
+	}
+
+	endGame() {
+		finishSession(this.gameSession.id, this.gameSession.score);
+		this.endMenuRunning = true;
+		this.endMenuRunner.run(this.gameSession);
+		this.getGameSession();
+		//this.changeMap(this.computeCurrentMap(this.gameSession.levels));
 	}
 
 	async init() {
@@ -49,13 +62,17 @@ class Game {
 
 		await this.levelGenerator.init();
 
+		await this.endMenuRunner.init();
+
 		this.changeMap(this.computeCurrentMap(this.gameSession.levels));
 
 		this.isReady = true;
 	}
 
 	draw() {
-		if (this.gamePaused) {
+		if (this.endMenuRunning) {
+			this.endMenuRunner.draw();
+		} else if (this.gamePaused) {
 			this.context.fillStyle = 'yellow';
 			this.context.font = 75 + 'px ArcadeRegular';
 			this.context.lineWidth = 3;
@@ -120,7 +137,7 @@ class Game {
 			}
 
 			this.context.fillStyle = 'yellow';
-			this.context.font = bottomMenuInfoSize + 'px ArcadeRegular';
+			this.context.font = bottomMenuInfoSize - 10 + 'px ArcadeRegular';
 
 			let scoreString = this.gameSession.score.toString();
 
@@ -128,9 +145,20 @@ class Game {
 
 			this.context.fillText(
 				'SCORE: ' + scoreString,
-				WindowWidth - 7 * bottomMenuInfoSize,
+				WindowWidth - 7 * (bottomMenuInfoSize - 10),
 				WindowHeight + BottomMenuHeight - bottomMenuStart - bottomMenuInfoSize / 3
 			);
+
+			if (this.levelRunning) {
+				let time = (Math.round(this.levelRunner.timer * 100) / 100).toString();
+				this.context.fillStyle = time > 10 ? 'yellow' : 'red';
+				this.context.font = bottomMenuInfoSize + 10 + 'px ArcadeRegular';
+				this.context.fillText(
+					time,
+					WindowWidth / 2 - 2 * (bottomMenuInfoSize - 10),
+					WindowHeight + BottomMenuHeight - bottomMenuStart - bottomMenuInfoSize / 3
+				);
+			}
 		}
 	}
 
@@ -140,7 +168,8 @@ class Game {
 	}
 
 	update() {
-		if (!this.gamePaused) {
+		if (this.endMenuRunning) {
+		} else if (!this.gamePaused) {
 			if (this.levelRunning) {
 				this.levelRunner.update();
 			} else {
@@ -252,6 +281,12 @@ class Game {
 		}
 	}
 
+	mouseInput(click){
+		if(this.endMenuRunning){
+			this.endMenuRunner.input(click);
+		}
+	}
+
 	async loadTextures() {
 		this.textures = [];
 
@@ -337,5 +372,10 @@ class Game {
 			}
 		}
 		return this.gameMap.length;
+	}
+
+	botEaten() {
+		this.gameSession.botsEaten++;
+		addBotEaten(this.gameSession.id);
 	}
 }

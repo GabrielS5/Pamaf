@@ -22,6 +22,14 @@ gameRunner(game);
 window.addEventListener('keydown', this.onKeyDown, false);
 window.addEventListener('keyup', this.onKeyUp, false);
 
+canvas.addEventListener(
+	'click',
+	function(event) {
+		game.mouseInput({ x: event.pageX - canvas.offsetLeft, y: event.pageY - canvas.offsetTop });
+	},
+	false
+);
+
 function onKeyDown(e) {
 	game.input(e.keyCode);
 }

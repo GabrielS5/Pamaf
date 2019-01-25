@@ -13,5 +13,7 @@ namespace Pamaf.Entities
         public DateTime Date { get; set; }
         public int Year { get; set; }
         public bool Finished { get; set; }
+        public int Time { get; set; }
+        public int BotsEaten { get; set; }
     }
 }

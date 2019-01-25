@@ -12,6 +12,7 @@ class LevelRunner {
 	}
 
 	run(level, difficulty, levelNumber) {
+		this.timer = LevelTime;
 		this.difficulty = difficulty;
 		this.levelNumber = levelNumber;
 		this.level = level;
@@ -53,25 +54,34 @@ class LevelRunner {
 	}
 
 	checkEndGame() {
+		if (this.timer < 0) {
+			this.game.endLevel({
+				success: false,
+				levelNumber: this.levelNumber,
+				timeElapsed: LevelTime
+			});
+		}
 		if (this.game.gameSession.hearts < 0) {
 			this.game.endLevel({
 				success: false,
-				levelNumber: this.levelNumber
+				levelNumber: this.levelNumber,
+				timeElapsed: Math.floor(LevelTime - this.timer) 
 			});
 		} else {
 			if (this.coinMap.filter(f => f.some(s => s != 0)).length == 0) {
 				this.game.endLevel({
 					success: true,
-					levelNumber: this.levelNumber
+					levelNumber: this.levelNumber,
+					timeElapsed: Math.floor(LevelTime - this.timer)
 				});
 			}
 		}
 	}
 
 	update() {
+		this.timer -= 1 / FramesPerSecond;
 		let pAverageLine = Math.floor((this.player.y + LevelCell / 2) / LevelCell);
 		let pAverageColumn = Math.floor((this.player.x + LevelCell / 2) / LevelCell);
-
 		// coins collisions
 		if (this.coinMap[pAverageLine][pAverageColumn] == 1) {
 			this.game.gameSession.score += 10;
@@ -89,6 +99,7 @@ class LevelRunner {
 			if (this.enemies[collision].mode == 2) {
 				this.enemies[collision].goSleep(Math.floor(200 - 100 * this.difficulty));
 				this.game.gameSession.score += 200;
+				this.game.botEaten();
 			} else {
 				this.game.loseHeart();
 				this.resetLevel();
@@ -225,7 +236,8 @@ class LevelRunner {
 		if (key == 16) {
 			this.game.endLevel({
 				success: true,
-				levelNumber: this.levelNumber
+				levelNumber: this.levelNumber,
+				timeElapsed: Math.floor(LevelTime - this.timer)
 			});
 		}
 		this.player.input(key);
