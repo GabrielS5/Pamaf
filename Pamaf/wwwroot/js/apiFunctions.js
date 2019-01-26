@@ -26,7 +26,7 @@ function guestLogin() {
 
 function logout() {
 	window.localStorage.removeItem('userId');
-	window.localStorage.setItem('isAuthenticated', false);
+    window.localStorage.setItem('isAuthenticated', false);
 }
 
 function getLastYear(id) {
