@@ -75,3 +75,13 @@ input[type="submit"] {
   font-size: 40px;
   font-family:  Tahoma, Geneva, Verdana, sans-serif;
 }
+
+#fb-button {
+    margin-top: 10px;
+    margin-left: 110px;
+    
+}
+#guestLogin{
+    margin-top: 10px;
+    margin-left: 100px;
+}
