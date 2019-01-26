@@ -1,4 +1,7 @@
 var avatarMenuVisible = false;
+console.log(JSON.parse(localStorage.getItem('friends')));
+if (localStorage.getItem('isAuthenticated') === 'true')
+	document.getElementById('avatar').src = localStorage.getItem('picture');
 
 document.getElementById('avatar').addEventListener('click', function(e) {
 	if (avatarMenuVisible) {
@@ -11,7 +14,6 @@ document.getElementById('avatar').addEventListener('click', function(e) {
 
 document.getElementById('logout').addEventListener('click', function(e) {
 	logout();
-	window.location.replace('../html/login.html');
 });
 
 document.getElementById('login').addEventListener('click', function(e) {

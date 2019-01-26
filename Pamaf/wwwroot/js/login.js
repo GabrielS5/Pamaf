@@ -1,76 +1,84 @@
-window.onload = function () {
-    //document.getElementById('fb-button').addEventListener('click', function(e) {
-    //       login("1", "Gabao");
-    //   });
-
-    document.getElementById('guestLogin').addEventListener('click', function (e) {
-        guestLogin();
-    });
+window.fbAsyncInit = function() {
+	FB.init({
+		appId: '350115898912228',
+		cookie: true,
+		xfbml: true,
+		version: 'v3.2'
+	});
 };
 
-window.fbAsyncInit = function () {
-    FB.init({
-        appId: '350115898912228',
-        cookie: true,
-        xfbml: true,
-        version: 'v3.2'
-    });
-
-
-    FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
-    });
-
-};
-
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) { return; }
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+(function(d, s, id) {
+	var js,
+		fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {
+		return;
+	}
+	js = d.createElement(s);
+	js.id = id;
+	js.src = 'https://connect.facebook.net/en_US/all.js';
+	fjs.parentNode.insertBefore(js, fjs);
+})(document, 'script', 'facebook-jssdk');
 
 function statusChangeCallback(response) {
-    if (response.status === 'connected') {
-        console.log('Logged in and authenticated');
-        //Aici redirectionare catre pagina ca si logat
-        getUserId();
-        getUserFriends();
-        getUserProfilePic();
-    }
-    else {
-        console.log('Not authenticated');
-    }
+	if (response.status === 'connected') {
+		getUserCredentials(function(response) {
+			getUserFriends(function() {
+				getUserProfilePic(function() {
+					login(response.id.toString(), response.name);
+				});
+			});
+		});
+	} else {
+	}
 }
 
-
 function checkLoginState() {
-    FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
-    });
+	FB.getLoginStatus(function(response) {
+		statusChangeCallback(response);
+	});
 }
 
 function getUserId() {
-    FB.api('/me?fields=id', function (response) {
-        if (response && !response.error) {
-            console.log(response.id);
-        }
-    })
+	FB.api('/me?fields=id', function(response) {
+		if (response && !response.error) {
+			console.log(response.id);
+		}
+	});
 }
 
-function getUserFriends() {
-    FB.api('/me?fields=friends', function (response) {
-        if (response && !response.error) {
-            console.log(response.friends);
-        }
-    })
+function getUserCredentials(callback) {
+	FB.api('/me?fields=name,id', function(response) {
+		if (response && !response.error) {
+			callback(response);
+		}
+	});
 }
 
-function getUserProfilePic() {
-    FB.api('/me?fields=picture', function (response) {
-        if (response && !response.error) {
-            console.log(response.picture);
-        }
-    })
+function getUserFriends(callback) {
+	return FB.api('/me?fields=friends', function(response) {
+		if (response && !response.error) {
+			localStorage.setItem('friends', JSON.stringify(response.friends.data));
+			callback();
+		}
+	});
+}
+
+function getUserProfilePic(callback) {
+	FB.api('/me?fields=picture.type(large)', function(response) {
+		if (response && !response.error) {
+			localStorage.setItem('picture', response.picture.data.url);
+			callback();
+		}
+	});
+}
+function facebookLogout() {
+	FB.getLoginStatus(function(response) {
+		console.log(response);
+		if (response.status === 'connected') {
+			FB.logout(function(response) {
+				FB.api('/me/permissions', 'delete', function(response) {});
+				window.location.replace('../html/login.html');
+			});
+		} else window.location.replace('../html/login.html');
+	});
 }

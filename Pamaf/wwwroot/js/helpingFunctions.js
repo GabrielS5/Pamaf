@@ -136,6 +136,19 @@ function checkCollision(player, structures) {
 	return -1;
 }
 
+function checkPointCollision(point, structures) {
+	for (let i = 0; i < structures.length; i++) {
+		if (
+			point.x >= structures[i].x &&
+			point.x <= structures[i].x + structures[i].width &&
+			point.y >= structures[i].y &&
+			point.y <= structures[i].y + structures[i].height
+		)
+			return i;
+	}
+	return -1;
+}
+
 function levelIsComplete(level, completedLevels) {
 	return completedLevels.some(function(element) {
 		return element.levelNumber == level.number;

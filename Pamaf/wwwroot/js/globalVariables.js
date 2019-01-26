@@ -6,3 +6,4 @@ var BottomMenuHeight = 100;
 var PlayerSize = 100;
 var FramesPerSecond = 60;
 var LevelTime = 20;
+var NumberOfLevels = 8;

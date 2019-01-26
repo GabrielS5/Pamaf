@@ -1,4 +1,4 @@
-var ApiLink = 'http://localhost:20000/api';
+var ApiLink = 'https://localhost:44338/api';
 
 function login(id, name) {
 	var xhr = new XMLHttpRequest();
@@ -26,7 +26,11 @@ function guestLogin() {
 
 function logout() {
 	window.localStorage.removeItem('userId');
-    window.localStorage.setItem('isAuthenticated', false);
+	window.localStorage.removeItem('picture');
+	window.localStorage.removeItem('friends');
+	window.localStorage.removeItem('userName');
+	window.localStorage.setItem('isAuthenticated', false);
+	window.location.replace('../html/logout.html');
 }
 
 function getLastYear(id) {
@@ -52,6 +56,13 @@ function getLastSession(id, year) {
 	}
 }
 
+function getLastSessionAsync(id, year) {
+	var xobj = new XMLHttpRequest();
+	xobj.overrideMimeType('application/json');
+	xobj.open('GET', ApiLink + '/gamesessions/latest/' + id + '/' + year, true);
+	return xobj;
+}
+
 function getAllSessions() {
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', ApiLink + '/gamesessions', true);
@@ -64,7 +75,7 @@ function loseHeart(id) {
 	xhr.send(null);
 }
 
-function addTime(id,time) {
+function addTime(id, time) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', ApiLink + '/gamesessions/addtime/' + id + '/' + time, true);
 	xhr.send(null);

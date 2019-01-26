@@ -12,6 +12,8 @@ class LevelPlayer {
 		this.size = LevelCell;
 		this.line = Math.floor(this.y / LevelCell);
 		this.column = Math.floor(this.x / LevelCell);
+		this.image = new Image();
+		this.image.src = localStorage.getItem('picture');
 	}
 
 	input(key) {
@@ -130,13 +132,28 @@ class LevelPlayer {
 	}
 
 	draw(verticalOffset, horizontalOffset) {
-		this.context.fillStyle = 'purple';
-		this.context.fillRect(
-			this.x + horizontalOffset + (LevelCell - this.size) / 2,
-			this.y + verticalOffset + (LevelCell - this.size) / 2,
-			this.size,
-			this.size
+		this.context.save();
+		this.context.beginPath();
+		this.context.arc(
+			this.x + horizontalOffset + (LevelCell - this.size) / 2 + this.size / 2,
+			this.y + verticalOffset + (LevelCell - this.size) / 2 + this.size / 2,
+			LevelCell,
+			0,
+			6.28,
+			false
 		);
+		this.context.clip();
+		this.context.closePath();
+		this.context.drawImage(
+			this.image,
+			this.x + horizontalOffset + (LevelCell - this.size) / 2 - LevelCell / 2,
+			this.y + verticalOffset + (LevelCell - this.size) / 2 - LevelCell / 2,
+			this.size * 2,
+			this.size * 2
+		);
+		this.context.lineWidth = 3;
+		this.context.stroke();
+		this.context.restore();
 	}
 	update() {
 		this.positionCorrection();

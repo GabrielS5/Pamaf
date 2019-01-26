@@ -7,35 +7,77 @@ class EndMenuRunner {
 	async init() {
 		this.menuCells = [];
 		this.menuButtons = [];
+		this.menuCells.push({
+			x: 105,
+			y: 365,
+			width: 175,
+			height: 50
+		});
+
+		this.menuCells.push({
+			x: 358,
+			y: 365,
+			width: 175,
+			height: 50
+		});
+
+		this.menuCells.push({
+			x: 613,
+			y: 365,
+			width: 175,
+			height: 50
+		});
+
+		this.menuCells.push({
+			x: 105,
+			y: 575,
+			width: 175,
+			height: 50
+		});
+
+		this.menuCells.push({
+			x: 358,
+			y: 575,
+			width: 175,
+			height: 50
+		});
+
+		this.menuCells.push({
+			x: 613,
+			y: 575,
+			width: 175,
+			height: 50
+		});
+
 		this.menuButtons.push({
 			x: 65,
-			y: 710,
+			y: 760,
 			width: 230,
 			height: 60,
-			action: function() {
-				console.log('Return to main menu');
+			action: function(menu) {
+				menu.game.toMainMenu();
 			}
 		});
 		this.menuButtons.push({
 			x: 332,
-			y: 710,
+			y: 760,
 			width: 230,
 			height: 60,
-			action: function() {
-				console.log('restart');
+			action: function(menu) {
+				menu.game.startGameFromMenu(menu.game.gameSession);
 			}
 		});
 		this.menuButtons.push({
 			x: 600,
-			y: 710,
+			y: 760,
 			width: 230,
 			height: 60,
-			action: function() {
+			action: function(menu) {
 				console.log('share');
 			}
 		});
 		this.menuTexture = new Image();
-		this.menuTexture.src = '../img/menues/endGameMenu.bmp';
+		this.menuTexture.src = '../img/menues/endGameMenu.png';
 	}
 
 	run(gameSession) {
@@ -48,21 +90,40 @@ class EndMenuRunner {
 		this.context.drawImage(
 			this.menuTexture,
 			(WindowWidth - 900) / 2,
-			(WindowHeight - 700) / 2,
+			(WindowHeight + BottomMenuHeight - 700) / 2,
 			900,
 			700
 		);
 
-		this.menuButtons.forEach(element => {
-			this.context.fillRect(element.x, element.y, element.width, element.height);
-		});
-    }
-    
-    input(click) {
-        console.log(click);
-        let clickedButton = checkCollision({x: click.x, y: click.y, width: 5, height: 5}, this.menuButtons);
-        console.log(clickedButton);
-        if(clickedButton != -1)
-            this.menuButtons[clickedButton].action();
-    }
+		this.writeInCell(0, this.gameSession.score.toString());
+		this.writeInCell(1, this.gameSession.levels.length.toString());
+		this.writeInCell(
+			2,
+			Math.floor((this.gameSession.levels.length / NumberOfLevels) * 100).toString() + '%'
+		);
+		this.writeInCell(3, this.gameSession.botsEaten.toString());
+		this.writeInCell(4, this.gameSession.time.toString());
+		this.writeInCell(5, this.gameSession.year.toString());
+	}
+
+	input(click) {
+		let clickedButton = checkPointCollision(click, this.menuButtons);
+		if (clickedButton != -1) this.menuButtons[clickedButton].action(this);
+	}
+
+	writeInCell(cell, text) {
+		this.context.fillStyle = 'yellow';
+		this.context.lineWidth = 1;
+		this.context.font = 50 + 'px ArcadeRegular';
+		this.context.fillText(
+			text,
+			this.menuCells[cell].x + this.menuCells[cell].width / 2 - (text.length * 30) / 2,
+			this.menuCells[cell].y + this.menuCells[cell].height
+		);
+		this.context.strokeText(
+			text,
+			this.menuCells[cell].x + this.menuCells[cell].width / 2 - (text.length * 30) / 2,
+			this.menuCells[cell].y + this.menuCells[cell].height
+		);
+	}
 }

@@ -1,32 +1,32 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Pamaf</title>
-    <link rel="stylesheet" href="../css/login.css" />
-</head>
+	<head>
+		<meta charset="utf-8" />
+		<title>Pamaf</title>
+		<link rel="stylesheet" href="../css/login.css" />
+	</head>
 
-<body>
-    <script src="../js/login.js"></script>
-    <div class="content">
-        <div class="login-wrapper">
-            <div class="login-window">
-                <div class="announcer">
-                    Login with <img src="../img/facebook.png" class="facebook-image" alt="facebook-logo" />
-                </div>
-                <input type="text" placeholder="Username" id="username" />
-                <input type="password" placeholder="password" id="password" />
-                <a>
-                    <fb:login-button id="fb-button"
-                                     scope="public_profile,email,user_friends"
-                                     onlogin="checkLoginState();">
-                    </fb:login-button>
-                </a>
-                <a id="guestLogin" class="guest">Enter as a guest?</a>
-            </div>
-        </div>
-    </div>
-</body>
-<script src="../js/apiFunctions.js"></script>
-
+	<body>
+		<script src="../js/login.js"></script>
+		<div class="content">
+			<div class="login-wrapper">
+				<div class="login-window">
+					<div class="announcer">
+						Login with <img src="../img/facebook.png" class="facebook-image" alt="facebook-logo" />
+					</div>
+					<a>
+						<fb:login-button
+							id="fb-button"
+							scope="public_profile,email,user_friends"
+							onlogin="checkLoginState();"
+						>
+						</fb:login-button>
+					</a>
+					<a id="guestLogin" class="guest">Enter as a guest?</a>
+				</div>
+			</div>
+		</div>
+	</body>
+    <script src="../js/loginPage.js"></script>
+	<script src="../js/apiFunctions.js"></script>
 </html>

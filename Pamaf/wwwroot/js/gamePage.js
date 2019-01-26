@@ -25,7 +25,22 @@ window.addEventListener('keyup', this.onKeyUp, false);
 canvas.addEventListener(
 	'click',
 	function(event) {
-		game.mouseInput({ x: event.pageX - canvas.offsetLeft, y: event.pageY - canvas.offsetTop });
+		let widthRatio = canvas.offsetWidth / WindowWidth;
+		let heightRatio = canvas.offsetHeight / (WindowHeight + BottomMenuHeight);
+		let widthMargin =
+			heightRatio < widthRatio ? canvas.offsetWidth * (widthRatio - heightRatio) : 0;
+		let heightMargin =
+			heightRatio > widthRatio ? canvas.offsetHeight * (heightRatio - widthRatio) : 0;
+
+		var rect = canvas.getBoundingClientRect();
+		var x = event.clientX - rect.left - widthMargin / 2;
+		x *= WindowWidth / (canvas.offsetWidth - widthMargin);
+		var y = event.clientY - rect.top - heightMargin / 2;
+		y *= (WindowHeight + BottomMenuHeight) / (canvas.offsetHeight - heightMargin);
+		game.mouseInput({
+			x: x,
+			y: y
+		});
 	},
 	false
 );
