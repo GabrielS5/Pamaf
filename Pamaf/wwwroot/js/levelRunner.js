@@ -5,13 +5,22 @@ class LevelRunner {
 		this.level = null;
 		this.player = null;
 		this.enemies = [];
+		this.friendsImages = [];
 	}
 
 	async init() {
+		if (localStorage.getItem('isAuthenticated')) {
+			JSON.parse(localStorage.getItem('friends')).forEach(element => {
+				getImageFromFacebookId(element.id, this, function(levelRunner, response) {
+					levelRunner.friendsImages.push(response.url);
+				});
+			});
+		}
 		await this.loadMapTextures(this);
 	}
 
 	run(level, difficulty, levelNumber) {
+		this.images = getBotImages(this.friendsImages, this.game.gameSession.year);
 		this.timer = LevelTime;
 		this.difficulty = difficulty;
 		this.levelNumber = levelNumber;
@@ -21,16 +30,60 @@ class LevelRunner {
 		this.player = new LevelPlayer(30, 30, 7, this.level, this.context);
 		this.enemies = [];
 		this.enemies.push(
-			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 1, this.difficulty, this.context)
+			new LevelEnemy(
+				30,
+				30,
+				10,
+				this.level,
+				guiding,
+				this.player,
+				1,
+				this.difficulty,
+				this.images[0],
+				this.context
+			)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 2, this.difficulty, this.context)
+			new LevelEnemy(
+				30,
+				30,
+				10,
+				this.level,
+				guiding,
+				this.player,
+				2,
+				this.difficulty,
+				this.images[1],
+				this.context
+			)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 3, this.difficulty, this.context)
+			new LevelEnemy(
+				30,
+				30,
+				10,
+				this.level,
+				guiding,
+				this.player,
+				3,
+				this.difficulty,
+				this.images[2],
+				this.context
+			)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 4, this.difficulty, this.context)
+			new LevelEnemy(
+				30,
+				30,
+				10,
+				this.level,
+				guiding,
+				this.player,
+				4,
+				this.difficulty,
+				this.images[3],
+				this.context
+			)
 		);
 	}
 
@@ -40,16 +93,60 @@ class LevelRunner {
 		let guiding = getGuiding(this.level);
 		this.enemies = [];
 		this.enemies.push(
-			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 1, this.difficulty, this.context)
+			new LevelEnemy(
+				30,
+				30,
+				10,
+				this.level,
+				guiding,
+				this.player,
+				1,
+				this.difficulty,
+				this.images[0],
+				this.context
+			)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 2, this.difficulty, this.context)
+			new LevelEnemy(
+				30,
+				30,
+				10,
+				this.level,
+				guiding,
+				this.player,
+				2,
+				this.difficulty,
+				this.images[1],
+				this.context
+			)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 3, this.difficulty, this.context)
+			new LevelEnemy(
+				30,
+				30,
+				10,
+				this.level,
+				guiding,
+				this.player,
+				3,
+				this.difficulty,
+				this.images[2],
+				this.context
+			)
 		);
 		this.enemies.push(
-			new LevelEnemy(30, 30, 10, this.level, guiding, this.player, 4, this.difficulty, this.context)
+			new LevelEnemy(
+				30,
+				30,
+				10,
+				this.level,
+				guiding,
+				this.player,
+				4,
+				this.difficulty,
+				this.images[3],
+				this.context
+			)
 		);
 	}
 
@@ -65,7 +162,7 @@ class LevelRunner {
 			this.game.endLevel({
 				success: false,
 				levelNumber: this.levelNumber,
-				timeElapsed: Math.floor(LevelTime - this.timer) 
+				timeElapsed: Math.floor(LevelTime - this.timer)
 			});
 		} else {
 			if (this.coinMap.filter(f => f.some(s => s != 0)).length == 0) {

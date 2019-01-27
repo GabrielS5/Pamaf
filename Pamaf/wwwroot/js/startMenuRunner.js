@@ -175,6 +175,7 @@ class StartMenuRunner {
 				if (element.time == 0) dateText = '00-00-0000';
 				this.context.fillStyle = 'yellow';
 				this.context.lineWidth = 1;
+				this.context.strokeStyle = 'black';
 				this.context.font = 50 + 'px ArcadeRegular';
 				this.context.fillText(
 					percentageText + '         ' + dateText,

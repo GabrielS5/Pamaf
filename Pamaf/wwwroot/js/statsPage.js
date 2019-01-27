@@ -8,13 +8,11 @@ window.onload = function() {
 			f => f.user.facebookId == window.localStorage.getItem('userId')
 		);
 
-		// let friends      TO DO
-
-		// let friendsNumber      TO DO
+		let friends = JSON.parse(localStorage.getItem('friends'));
 
 		let numberOfGames = userSessions.length;
 
-		let gamesWon = userSessions.filter(f => f.levels.length == 10).length;
+		let gamesWon = userSessions.filter(f => f.levels.length == NumberOfLevels).length;
 
 		let highScore = userSessions.reduce((r1, r2) => (r1.score > r2.score ? r1 : r2)).score;
 
@@ -47,6 +45,33 @@ window.onload = function() {
 			(startedPlaying.getMonth() + 1) +
 			'-' +
 			startedPlaying.getFullYear();
+		document.getElementById('friendsNumber').innerText = friends.length;
+
+		var items = document.getElementById('friends-list');
+
+		items.innerHTML = '';
+
+		for (let i = 0; i < 10 && i < friends.length; i++) {
+			var item = document.createElement('DIV');
+			item.classList.add('friend');
+
+			var itemName = document.createElement('SPAN');
+			itemName.classList.add('friend-name');
+			itemName.innerHTML = friends[i].name;
+
+			let friendSessions = sessions.filter(f => f.user.facebookId == friends[i].id);
+
+			var itemValue = document.createElement('SPAN');
+			itemValue.classList.add('friend-score');
+			itemValue.innerHTML =
+				friendSessions.length == 0
+					? 0
+					: friendSessions.reduce((r1, r2) => (r1.score > r2.score ? r1 : r2)).score;
+
+			item.appendChild(itemName);
+			item.appendChild(itemValue);
+			items.appendChild(item);
+		}
 	};
 
 	request.send(null);

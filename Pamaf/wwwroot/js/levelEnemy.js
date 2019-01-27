@@ -1,5 +1,5 @@
 class LevelEnemy {
-	constructor(x, y, speed, level, guiding, player, enemyType, difficulty, context) {
+	constructor(x, y, speed, level, guiding, player, enemyType, difficulty, imageUrl, context) {
 		this.x = x;
 		this.y = y;
 		this.width = LevelCell;
@@ -20,6 +20,8 @@ class LevelEnemy {
 		this.cycleCount = 0;
 		this.enemyCorner = getCorner(this.enemyType);
 		this.randomChance = 1 - (0.7 + 0.3 * difficulty);
+		this.image = new Image();
+		this.image.src = imageUrl;
 
 		// enemyMode:
 		// 1  -  sleep
@@ -251,13 +253,30 @@ class LevelEnemy {
 	}
 
 	draw(verticalOffset, horizontalOffset) {
-		this.context.fillStyle = 'purple';
-		this.context.fillRect(
-			this.x + horizontalOffset + (LevelCell - this.size) / 2,
-			this.y + verticalOffset + (LevelCell - this.size) / 2,
-			this.size,
-			this.size
+		this.context.save();
+		this.context.beginPath();
+		this.context.arc(
+			this.x + horizontalOffset + (LevelCell - this.size) / 2 + this.size / 2,
+			this.y + verticalOffset + (LevelCell - this.size) / 2 + this.size / 2,
+			LevelCell,
+			0,
+			6.28,
+			false
 		);
+		this.context.clip();
+		this.context.closePath();
+		this.context.drawImage(
+			this.image,
+			this.x + horizontalOffset + (LevelCell - this.size) / 2 - LevelCell / 2,
+			this.y + verticalOffset + (LevelCell - this.size) / 2 - LevelCell / 2,
+			this.size * 2,
+			this.size * 2
+		);
+		if (this.mode == 2) this.context.strokeStyle = 'blue';
+		else this.context.strokeStyle = 'red';
+		this.context.lineWidth = 5;
+		this.context.stroke();
+		this.context.restore();
 	}
 	update() {
 		this.cycleCount = (this.cycleCount + 1) % GameCycle;

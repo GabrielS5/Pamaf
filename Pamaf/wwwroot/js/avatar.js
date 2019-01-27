@@ -1,5 +1,5 @@
 var avatarMenuVisible = false;
-console.log(JSON.parse(localStorage.getItem('friends')));
+
 if (localStorage.getItem('isAuthenticated') === 'true')
 	document.getElementById('avatar').src = localStorage.getItem('picture');
 

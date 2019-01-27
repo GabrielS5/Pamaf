@@ -154,3 +154,19 @@ function levelIsComplete(level, completedLevels) {
 		return element.levelNumber == level.number;
 	});
 }
+
+function getBotImages(friends, year) {
+	var images = friends.slice();
+	if (year == 1) images = images.concat(FirstYearTeachers.slice());
+	else if (year == 2) images = images.concat(SecondYearTeachers.slice());
+	else images = images.concat(ThirdYearTeachers.slice());
+	var result = [];
+	
+	for (let i = 0; i < 4; i++) {
+		let randNumber = Math.floor(Math.random() * images.length);
+		result.push(images[randNumber]);
+		images.splice(randNumber, randNumber);
+	}
+
+	return result;
+}

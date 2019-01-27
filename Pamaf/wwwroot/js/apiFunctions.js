@@ -115,3 +115,8 @@ function changeName(id, name) {
 	};
 	xhr.send(null);
 }
+
+async function getImageFromFacebookId(id,container, callback) {
+	const response = await fetch('https://graph.facebook.com/v3.2/' + id + '/picture?height=500');
+	callback(container,await response);
+}

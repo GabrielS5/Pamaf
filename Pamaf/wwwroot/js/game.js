@@ -63,8 +63,6 @@ class Game {
 		finishSession(this.gameSession.id, this.gameSession.score);
 		this.endMenuRunning = true;
 		this.endMenuRunner.run(this.gameSession);
-		delete this.gameSession;
-		this.getGameSession(this);
 	}
 
 	async init() {

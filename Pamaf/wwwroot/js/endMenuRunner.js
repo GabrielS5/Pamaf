@@ -59,15 +59,6 @@ class EndMenuRunner {
 			}
 		});
 		this.menuButtons.push({
-			x: 332,
-			y: 760,
-			width: 230,
-			height: 60,
-			action: function(menu) {
-				menu.game.startGameFromMenu(menu.game.gameSession);
-			}
-		});
-		this.menuButtons.push({
 			x: 600,
 			y: 760,
 			width: 230,
@@ -113,6 +104,7 @@ class EndMenuRunner {
 
 	writeInCell(cell, text) {
 		this.context.fillStyle = 'yellow';
+		this.context.strokeStyle = 'black';
 		this.context.lineWidth = 1;
 		this.context.font = 50 + 'px ArcadeRegular';
 		this.context.fillText(

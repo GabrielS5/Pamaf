@@ -13,7 +13,9 @@ class LevelPlayer {
 		this.line = Math.floor(this.y / LevelCell);
 		this.column = Math.floor(this.x / LevelCell);
 		this.image = new Image();
-		this.image.src = localStorage.getItem('picture');
+		if (localStorage.getItem('isAuthenticated') === 'true')
+			this.image.src = localStorage.getItem('picture');
+		else this.image.src = '../img/boy.bmp';
 	}
 
 	input(key) {
@@ -151,6 +153,7 @@ class LevelPlayer {
 			this.size * 2,
 			this.size * 2
 		);
+		this.context.strokeStyle = 'black';
 		this.context.lineWidth = 3;
 		this.context.stroke();
 		this.context.restore();
