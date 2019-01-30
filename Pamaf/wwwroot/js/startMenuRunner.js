@@ -48,9 +48,9 @@ class StartMenuRunner {
 		});
 
 		this.howToButtons.push({
-			x: 65,
+			x: 0,
 			y: 780,
-			width: 110,
+			width: 150,
 			height: 60,
 			action: function(menu) {
 				menu.currentMenu = 0;
@@ -58,9 +58,9 @@ class StartMenuRunner {
 		});
 
 		this.changeSessionButtons.push({
-			x: 65,
+			x: 0,
 			y: 780,
-			width: 110,
+			width: 150,
 			height: 60,
 			action: function(menu) {
 				menu.currentMenu = 0;

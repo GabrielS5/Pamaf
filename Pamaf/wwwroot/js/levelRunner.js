@@ -6,6 +6,15 @@ class LevelRunner {
 		this.player = null;
 		this.enemies = [];
 		this.friendsImages = [];
+		this.backgroundColors = [
+			'cyan',
+			'rgb(0,255,64)',
+			'rgb(255,0,255)',
+			'rgb(255,128,64)',
+			'rgb(255,128,128)',
+			'rgb(192,192,192)',
+			'rgb(128,128,255)'
+		];
 	}
 
 	async init() {
@@ -23,6 +32,7 @@ class LevelRunner {
 		this.images = getBotImages(this.friendsImages, this.game.gameSession.year);
 		this.timer = LevelTime;
 		this.difficulty = difficulty;
+		this.color = this.backgroundColors[Math.floor(Math.random() * this.backgroundColors.length)];
 
 		if (localStorage.getItem('year') == '1') this.difficulty += 0.1;
 		else if (localStorage.getItem('year') == '2') this.difficulty += 0.2;
@@ -285,7 +295,7 @@ class LevelRunner {
 		let verticalOffset = (WindowHeight - this.level.length * LevelCell) / 2;
 		let horizontalOffset = (WindowWidth - this.level[0].length * LevelCell) / 2;
 
-		this.context.fillStyle = 'cyan';
+		this.context.fillStyle = this.color;
 		this.context.fillRect(
 			horizontalOffset,
 			verticalOffset,

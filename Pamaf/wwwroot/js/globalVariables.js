@@ -6,7 +6,7 @@ var BottomMenuHeight = 100;
 var PlayerSize = 100;
 var FramesPerSecond = 60;
 var LevelTime = 99;
-var NumberOfLevels = 10;
+var NumberOfLevels = 11;
 
 var FirstYearTeachers = [
 	'https://scontent.fias1-1.fna.fbcdn.net/v/t1.0-9/20429751_10210419669592809_8120883893813724813_n.jpg?_nc_cat=105&_nc_ht=scontent.fias1-1.fna&oh=36e3d31a89878957be68b7ed05b3a7ea&oe=5CB85E1E',

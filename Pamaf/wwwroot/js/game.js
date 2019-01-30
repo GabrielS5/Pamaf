@@ -99,7 +99,17 @@ class Game {
 				this.levelRunner.draw();
 			} else {
 				this.gameMap[this.currentMap].walls.forEach(element => {
-					this.context.fillStyle = 'brown';
+					this.context.fillStyle = 'rgb(98,98,98)';
+					this.context.fillRect(
+						element.x - this.x,
+						element.y - this.y,
+						element.width,
+						element.height
+					);
+				});
+
+				this.gameMap[this.currentMap].extra.forEach(element => {
+					this.context.fillStyle = element.color;
 					this.context.fillRect(
 						element.x - this.x,
 						element.y - this.y,
