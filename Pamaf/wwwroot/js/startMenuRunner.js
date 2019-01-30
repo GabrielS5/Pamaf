@@ -18,8 +18,12 @@ class StartMenuRunner {
 			width: 320,
 			height: 60,
 			action: function(menu) {
-				menu.gameSession = menu.gameSessions[parseInt(window.localStorage['year']) - 1];
-				menu.game.startGameFromMenu(menu.gameSession);
+				if (localStorage.getItem('isAuthenticated') === 'true') {
+					menu.gameSession = menu.gameSessions[parseInt(window.localStorage['year']) - 1];
+					menu.game.startGameFromMenu(menu.gameSession);
+				} else {
+					menu.game.startGameFromMenu(menu.gameSession);
+				}
 			}
 		});
 
@@ -39,7 +43,7 @@ class StartMenuRunner {
 			width: 320,
 			height: 60,
 			action: function(menu) {
-				menu.currentMenu = 2;
+				if (localStorage.getItem('isAuthenticated') === 'true') menu.currentMenu = 2;
 			}
 		});
 
@@ -106,12 +110,14 @@ class StartMenuRunner {
 		texture.src = '../img/menues/changeSessionMenu.png';
 		this.menuTextures.push(texture);
 
-		this.getGameSessions(this);
+		if (localStorage.getItem('isAuthenticated') === 'true') this.getGameSessions(this);
+		else this.gameSession = { levels: [], hearts: 3, score: 0, year: 1, time: 0, botsEaten: 0 };
 	}
 
 	run() {
 		this.currentMenu = 0;
-		this.getGameSessions(this);
+		if (localStorage.getItem('isAuthenticated') === 'true') this.getGameSessions(this);
+		else this.gameSession = { levels: [], hearts: 3, score: 0, year: 1, time: 0, botsEaten: 0 };
 	}
 
 	draw() {
@@ -196,6 +202,20 @@ class StartMenuRunner {
 						5
 				);
 			});
+		}
+		if (localStorage.getItem('isAuthenticated') === 'false') {
+			this.context.beginPath();
+			this.context.moveTo(
+				this.menuButtons[2].x,
+				this.menuButtons[2].y + this.menuButtons[2].height / 2
+			);
+			this.context.lineTo(
+				this.menuButtons[2].x + this.menuButtons[2].width,
+				this.menuButtons[2].y + this.menuButtons[2].height / 2
+			);
+			this.context.strokeStyle = 'black';
+			this.context.lineWidth = 3;
+			this.context.stroke();
 		}
 	}
 

@@ -66,6 +66,9 @@ namespace Pamaf.Controllers
         {
             var gameSession = await gameSessionsRepository.GetById(new Guid(id));
 
+            if (gameSession == null)
+                return Ok();
+
             gameSession.Hearts--;
             await gameSessionsRepository.Update(gameSession);
 
@@ -76,6 +79,9 @@ namespace Pamaf.Controllers
         public async Task<IActionResult> Finish(string id, int score)
         {
             var gameSession = await gameSessionsRepository.GetById(new Guid(id));
+
+            if (gameSession == null)
+                return Ok();
 
             gameSession.Finished = true;
             gameSession.Score = score;
@@ -89,6 +95,9 @@ namespace Pamaf.Controllers
         public async Task<IActionResult> AddLevel(string id, int score, int levelNumber)
         {
             var gameSession = await gameSessionsRepository.GetById(new Guid(id));
+
+            if (gameSession == null)
+                return Ok();
 
             gameSession.Score = score;
 
@@ -108,6 +117,9 @@ namespace Pamaf.Controllers
         {
             var gameSession = await gameSessionsRepository.GetById(new Guid(id));
 
+            if (gameSession == null)
+                return Ok();
+
             gameSession.Time += time;
 
             await gameSessionsRepository.Update(gameSession);
@@ -119,6 +131,9 @@ namespace Pamaf.Controllers
         public async Task<IActionResult> AddBotsEaten(string id)
         {
             var gameSession = await gameSessionsRepository.GetById(new Guid(id));
+
+            if (gameSession == null)
+                return Ok();
 
             gameSession.BotsEaten++;
 

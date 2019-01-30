@@ -9,7 +9,7 @@ class LevelRunner {
 	}
 
 	async init() {
-		if (localStorage.getItem('isAuthenticated')) {
+		if (localStorage.getItem('isAuthenticated') === 'true') {
 			JSON.parse(localStorage.getItem('friends')).forEach(element => {
 				getImageFromFacebookId(element.id, this, function(levelRunner, response) {
 					levelRunner.friendsImages.push(response.url);
@@ -23,6 +23,11 @@ class LevelRunner {
 		this.images = getBotImages(this.friendsImages, this.game.gameSession.year);
 		this.timer = LevelTime;
 		this.difficulty = difficulty;
+
+		if (localStorage.getItem('year') == '1') this.difficulty += 0.1;
+		else if (localStorage.getItem('year') == '2') this.difficulty += 0.2;
+		else this.difficulty += 0.3;
+
 		this.levelNumber = levelNumber;
 		this.level = level;
 		let guiding = getGuiding(level);
@@ -33,7 +38,7 @@ class LevelRunner {
 			new LevelEnemy(
 				30,
 				30,
-				10,
+				Math.floor(18 - 8 * this.difficulty),
 				this.level,
 				guiding,
 				this.player,
@@ -47,7 +52,7 @@ class LevelRunner {
 			new LevelEnemy(
 				30,
 				30,
-				10,
+				Math.floor(18 - 8 * this.difficulty),
 				this.level,
 				guiding,
 				this.player,
@@ -61,7 +66,7 @@ class LevelRunner {
 			new LevelEnemy(
 				30,
 				30,
-				10,
+				Math.floor(18 - 8 * this.difficulty),
 				this.level,
 				guiding,
 				this.player,
@@ -75,7 +80,7 @@ class LevelRunner {
 			new LevelEnemy(
 				30,
 				30,
-				10,
+				Math.floor(18 - 8 * this.difficulty),
 				this.level,
 				guiding,
 				this.player,
@@ -96,7 +101,7 @@ class LevelRunner {
 			new LevelEnemy(
 				30,
 				30,
-				10,
+				Math.floor(18 - 8 * this.difficulty),
 				this.level,
 				guiding,
 				this.player,
@@ -110,7 +115,7 @@ class LevelRunner {
 			new LevelEnemy(
 				30,
 				30,
-				10,
+				Math.floor(18 - 8 * this.difficulty),
 				this.level,
 				guiding,
 				this.player,
@@ -124,7 +129,7 @@ class LevelRunner {
 			new LevelEnemy(
 				30,
 				30,
-				10,
+				Math.floor(18 - 8 * this.difficulty),
 				this.level,
 				guiding,
 				this.player,
@@ -138,7 +143,7 @@ class LevelRunner {
 			new LevelEnemy(
 				30,
 				30,
-				10,
+				Math.floor(18 - 8 * this.difficulty),
 				this.level,
 				guiding,
 				this.player,

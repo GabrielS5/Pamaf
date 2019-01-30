@@ -70,7 +70,7 @@
         "height": 150,
         "type": "level",
         "number": 1,
-        "difficulty": 0.5
+        "difficulty": 0.2
       },
       {
         "x": 700,
@@ -79,7 +79,7 @@
         "height": 150,
         "type": "level",
         "number": 2,
-        "difficulty": 0.5
+        "difficulty": 0.25
       },
       {
         "x": 600,
@@ -88,7 +88,7 @@
         "height": 150,
         "type": "level",
         "number": 3,
-        "difficulty": 0.8
+        "difficulty": 0.3
       },
       {
         "x": -100,
@@ -97,7 +97,7 @@
         "height": 150,
         "type": "level",
         "number": 4,
-        "difficulty": 0.8
+        "difficulty": 0.3
       },
       {
         "x": -750,
@@ -106,7 +106,7 @@
         "height": 150,
         "type": "level",
         "number": 5,
-        "difficulty": 0.8
+        "difficulty": 0.35
       },
       {
         "x": -1150,
@@ -115,7 +115,7 @@
         "height": 150,
         "type": "level",
         "number": 6,
-        "difficulty": 0.8
+        "difficulty": 0.40
       },
       {
         "x": -1550,
@@ -124,7 +124,7 @@
         "height": 150,
         "type": "level",
         "number": 7,
-        "difficulty": 0.8
+        "difficulty": 0.45
       }
 
     ],
@@ -222,8 +222,8 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 6,
-        "difficulty": 0.8
+        "number": 8,
+        "difficulty": 0.5
       },
       {
         "x": -700,
@@ -231,8 +231,8 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 7,
-        "difficulty": 0.8
+        "number": 9,
+        "difficulty": 0.55
       }
     ],
     "playerPosition": {
@@ -245,7 +245,6 @@
       "width": 150,
       "height": 150
     }
-
   },
   {
     "walls": [
@@ -342,8 +341,8 @@
         "width": 150,
         "height": 150,
         "type": "level",
-        "number": 8,
-        "difficulty": 0.8
+        "number": 10,
+        "difficulty": 0.65
       }
     ],
     "playerPosition": {

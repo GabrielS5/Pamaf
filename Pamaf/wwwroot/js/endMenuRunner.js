@@ -64,7 +64,7 @@ class EndMenuRunner {
 			width: 230,
 			height: 60,
 			action: function(menu) {
-				console.log('share');
+				if (localStorage.getItem('isAuthenticated') === 'true') share();
 			}
 		});
 		this.menuTexture = new Image();
@@ -95,6 +95,21 @@ class EndMenuRunner {
 		this.writeInCell(3, this.gameSession.botsEaten.toString());
 		this.writeInCell(4, this.gameSession.time.toString());
 		this.writeInCell(5, this.gameSession.year.toString());
+
+		if (localStorage.getItem('isAuthenticated') === 'false') {
+			this.context.beginPath();
+			this.context.moveTo(
+				this.menuButtons[1].x,
+				this.menuButtons[1].y + this.menuButtons[1].height / 2
+			);
+			this.context.lineTo(
+				this.menuButtons[1].x + this.menuButtons[1].width,
+				this.menuButtons[1].y + this.menuButtons[1].height / 2
+			);
+			this.context.strokeStyle = 'black';
+			this.context.lineWidth = 3;
+			this.context.stroke();
+		}
 	}
 
 	input(click) {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pamaf.Entities;
 using Pamaf.Repositories.Interfaces;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -52,9 +53,16 @@ namespace Pamaf.Controllers
         public async Task<IActionResult> GetYear(string id)
         {
             var user = await usersRepository.GetByFacebookId(id);
-            var lastSession = (await gameSessionsRepository.GetByUser(user)).OrderBy(o => o.Date).FirstOrDefault();
-            if (lastSession != null)
-                return Ok(lastSession.Year);
+            try
+            {
+                var lastSession = (await gameSessionsRepository.GetByUser(user)).Where(w => w.Score != 0).OrderBy(o => o.Date).FirstOrDefault();
+                if (lastSession != null)
+                    return Ok(lastSession.Year);
+            }
+            catch
+            {
+                return Ok(1);
+            }
 
             return Ok(1);
         }

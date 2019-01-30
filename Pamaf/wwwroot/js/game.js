@@ -53,9 +53,7 @@ class Game {
 			this.gameSession.levels.push({ levelNumber: result.levelNumber });
 		} else {
 			if (result.timeElapsed == LevelTime) this.loseHeart();
-			if (this.gameSession.hearts < 0) {
-				this.endGame();
-			}
+			if (this.gameSession.hearts < 0) this.endGame();
 		}
 	}
 
@@ -110,8 +108,8 @@ class Game {
 					);
 				});
 
-				this.context.fillStyle = 'blue';
-				this.context.fillRect(
+				this.context.drawImage(
+					this.textures[5],
 					this.gameMap[this.currentMap].exitZone.x - this.x,
 					this.gameMap[this.currentMap].exitZone.y - this.y,
 					this.gameMap[this.currentMap].exitZone.width,
@@ -119,15 +117,22 @@ class Game {
 				);
 
 				this.gameMap[this.currentMap].levels.forEach(element => {
-					if (levelIsComplete(element, this.gameSession.levels)) this.context.fillStyle = 'green';
-					else this.context.fillStyle = 'yellow';
-
-					this.context.fillRect(
-						element.x - this.x,
-						element.y - this.y,
-						element.width,
-						element.height
-					);
+					if (levelIsComplete(element, this.gameSession.levels))
+						this.context.drawImage(
+							this.textures[4],
+							element.x - this.x,
+							element.y - this.y,
+							element.width,
+							element.height
+						);
+					else
+						this.context.drawImage(
+							this.textures[3],
+							element.x - this.x,
+							element.y - this.y,
+							element.width,
+							element.height
+						);
 				});
 
 				this.player.draw();
@@ -291,9 +296,7 @@ class Game {
 					let nextMap = this.computeCurrentMap(this.gameSession.levels);
 					if (this.currentMap != nextMap) {
 						if (nextMap != this.gameMap.length) this.changeMap(nextMap);
-						else {
-							finishSession(this.gameSession.id, this.gameSession.score);
-						}
+						else this.endGame();
 					}
 				}
 			} else {
@@ -331,6 +334,18 @@ class Game {
 
 		texture = new Image();
 		texture.src = '../img/menues/backToMenu.png';
+		this.textures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/star.png';
+		this.textures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/checkmark.png';
+		this.textures.push(texture);
+
+		texture = new Image();
+		texture.src = '../img/exit.png';
 		this.textures.push(texture);
 	}
 

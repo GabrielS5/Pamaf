@@ -21,6 +21,7 @@ function login(id, name) {
 function guestLogin() {
 	window.localStorage.setItem('userName', 'Guest');
 	window.localStorage.setItem('isAuthenticated', 'false');
+	window.localStorage.setItem('year', '1');
 	window.location.replace('../html/home.html');
 }
 
@@ -70,30 +71,35 @@ function getAllSessions() {
 }
 
 function loseHeart(id) {
+	if (!id) return;
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', ApiLink + '/gamesessions/loseheart/' + id, true);
 	xhr.send(null);
 }
 
 function addTime(id, time) {
+	if (!id) return;
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', ApiLink + '/gamesessions/addtime/' + id + '/' + time, true);
 	xhr.send(null);
 }
 
 function addBotEaten(id) {
+	if (!id) return;
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', ApiLink + '/gamesessions/addbotseaten/' + id, true);
 	xhr.send(null);
 }
 
 function finishSession(id, score) {
+	if (!id) return;
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', ApiLink + '/gamesessions/finish/' + id + '/' + score, true);
 	xhr.send(null);
 }
 
 function completeLevel(id, score, levelNumber) {
+	if (!id) return;
 	var xhr = new XMLHttpRequest();
 	xhr.open(
 		'POST',
@@ -116,7 +122,7 @@ function changeName(id, name) {
 	xhr.send(null);
 }
 
-async function getImageFromFacebookId(id,container, callback) {
+async function getImageFromFacebookId(id, container, callback) {
 	const response = await fetch('https://graph.facebook.com/v3.2/' + id + '/picture?height=500');
-	callback(container,await response);
+	callback(container, await response);
 }

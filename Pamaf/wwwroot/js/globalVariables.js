@@ -6,12 +6,12 @@ var BottomMenuHeight = 100;
 var PlayerSize = 100;
 var FramesPerSecond = 60;
 var LevelTime = 99;
-var NumberOfLevels = 8;
+var NumberOfLevels = 10;
 
 var FirstYearTeachers = [
 	'https://scontent.fias1-1.fna.fbcdn.net/v/t1.0-9/20429751_10210419669592809_8120883893813724813_n.jpg?_nc_cat=105&_nc_ht=scontent.fias1-1.fna&oh=36e3d31a89878957be68b7ed05b3a7ea&oe=5CB85E1E',
 	'https://profs.info.uaic.ro/~fltiplea/images/Ferucio.gif',
-	'http://sparks.ccsir.org/wp-content/uploads/2014/07/Drago%C8%99-Gavrilu%C8%9B-1024x917.png',
+	'https://www.virusbulletin.com/files/2914/6600/6130/108x163-dragos-gavrilut.jpg',
 	'https://0.academia-photos.com/24303958/6657191/7522419/s200_florin.iacob.jpg_oh_651e33c7ba52780116dc6183756cdef5_oe_5539b481___gda___1429098350_a2cd668deb5da159eab2f3721172beba',
 	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyKaJMhUVxsUW_fBEWqjGVX0-BJGaqiXS5uXgPjALDPUsXXIYe',
 	'https://fmse.info.uaic.ro/wp-content/uploads/2018/03/dl_small-14.jpg',
@@ -36,7 +36,7 @@ var SecondYearTeachers = [
 
 var ThirdYearTeachers = [
 	'https://profs.info.uaic.ro/~fltiplea/images/Ferucio.gif',
-	'http://sparks.ccsir.org/wp-content/uploads/2014/07/Drago%C8%99-Gavrilu%C8%9B-1024x917.png',
+	'https://www.virusbulletin.com/files/2914/6600/6130/108x163-dragos-gavrilut.jpg',
 	'https://scontent.fias1-1.fna.fbcdn.net/v/t1.0-9/25498368_563314850681709_7030529105698131313_n.jpg?_nc_cat=104&_nc_ht=scontent.fias1-1.fna&oh=b2c30707b1e96cd63534eb6db191d89d&oe=5CF1FECD',
 	'https://www.librariaonline.ro/images/authors/sabin_buraga.jpg',
 	'https://www.centric.eu/Renderers/ShowMedia.ashx?i=MediaArchive:d26ff25f-0694-4ce1-82f7-e8a8a42ca6a1',

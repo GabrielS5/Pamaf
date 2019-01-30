@@ -73,12 +73,18 @@ function getUserProfilePic(callback) {
 }
 function facebookLogout() {
 	FB.getLoginStatus(function(response) {
-		console.log(response);
 		if (response.status === 'connected') {
 			FB.logout(function(response) {
 				FB.api('/me/permissions', 'delete', function(response) {});
 				window.location.replace('../html/login.html');
 			});
 		} else window.location.replace('../html/login.html');
+	});
+}
+
+function share() {
+	FB.ui({
+		method: 'share',
+		href: 'https://github.com/GabrielS5/Pamaf/tree/master/Pamaf'
 	});
 }

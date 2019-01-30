@@ -19,7 +19,7 @@ class LevelEnemy {
 		this.cycleLimit = Math.floor(GameCycle * difficulty);
 		this.cycleCount = 0;
 		this.enemyCorner = getCorner(this.enemyType);
-		this.randomChance = 1 - (0.7 + 0.3 * difficulty);
+		this.randomChance = 1 - (0.6 + 0.4 * difficulty);
 		this.image = new Image();
 		this.image.src = imageUrl;
 
